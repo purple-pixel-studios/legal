@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — closed test</title>
+<!-- Interim closed-test notice (PROD-4, ADR-14). Source of truth: persona repo docs/legal/;
+     the public Pages repo carries a copy. Superseded by the S3 public pages (spec §6). -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+</style>
+</head>
+<body>
+<h1>Privacy policy</h1>
+<p class="meta">Closed test build · effective 2026-09-27</p>
+
+<p>This notice covers the closed test of the app on Google Play. It describes what the test build actually does. A fuller notice, in every language the app supports, replaces it before the public launch.</p>
+
+<h2>Who is responsible</h2>
+<p>An individual developer publishes the app. Contact: <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a>.</p>
+
+<h2>What the app collects</h2>
+<ul>
+  <li><strong>A device identity.</strong> On first launch the app creates a random device ID and a random secret. Our server stores the device ID, a one-way hash of the secret (never the secret itself), an internal record number we assign to the device, the platform (Android), your time zone, and when the device first registered and last connected. There is no account, name, e-mail address or phone number.</li>
+  <li><strong>Your chats.</strong> The messages you send and the replies you receive are stored on our server so that your conversations work, together with when each message was sent, which character, card version and model answered, and the number of tokens used.</li>
+  <li><strong>A keyed hash of your IP address</strong> and a per-device counter, used only to limit how many new identities one network can create and how often one device can renew its access (abuse prevention). We store a keyed hash, not the address. Counters stop being used once they are more than two days old, and are deleted the next time any device registers or renews its access.</li>
+  <li><strong>Service logs</strong> that record errors and request status. Our own logs never contain message text. The infrastructure logs of Supabase and Cloudflare record your IP address and request details for a short period (about one day on our Supabase plan) before they are discarded.</li>
+</ul>
+
+<h2>How it is used</h2>
+<p>We use this data only to run the chat service, to keep it secure, and to prevent abuse. Your messages are <strong>never used to train AI models</strong>. The test build shows no ads, contains no analytics or tracking SDK, and we do not sell or share your data for advertising.</p>
+
+<h2>Who processes it for us</h2>
+<ul>
+  <li><strong>Supabase</strong> hosts the database in the EU (Frankfurt) and runs the server functions on its infrastructure, which may be outside the EU. The Cloudflare network routes requests to it, and in doing so it handles your IP address.</li>
+  <li><strong>Google (Gemini API)</strong> generates the character replies. Each message is sent together with up to the eight most recent earlier messages from the same conversation, the language the app is set to, and the character's instructions. Google may process them outside the EU. We use Google's paid API tier, whose terms say Google does not use prompts or responses to improve its products.</li>
+  <li><strong>Google Play</strong> distributes the test build and gives us aggregated install and crash statistics for it.</li>
+</ul>
+
+<h2>On your device</h2>
+<p>The app keeps a local copy of your chats and your device secret in app-private storage, which is excluded from device backups. "Clear local data" in the chat menu deletes both from the device. It does not delete the copy on our server; see below.</p>
+
+<h2>How long we keep it</h2>
+<p>We keep closed-test data only for as long as the closed test runs. We delete all of it no later than 30 days after the test ends, or sooner if you ask.</p>
+
+<h2>Deleting your data</h2>
+<p>E-mail <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> with the subject "Delete my data". The app has no account, so tell us roughly when you first opened the app, your time zone, and which character you chatted with first; that lets us find your device's records. Each use of "Clear local data" creates a new device record, so tell us about each one. We delete them within 30 days and confirm by e-mail. Deletion from inside the app arrives before the public launch.</p>
+
+<h2>Children</h2>
+<p>The app is not meant for anyone under 13.</p>
+
+<h2>Your rights</h2>
+<p>You can ask for a copy of your data or its deletion, and you can object to its processing, by writing to the contact address above. You may also complain to your local data-protection authority.</p>
+
+<h2>Changes</h2>
+<p>If this notice changes during the test, the effective date above changes too.</p>
+</body>
+</html>
