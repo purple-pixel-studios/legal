@@ -45,7 +45,7 @@
   <li><strong>Google (sign-in)</strong>, only if you choose Google sign-in, identifies your Google account to us. The app passes us Google's sign-in token, which can include your name and e-mail address; our server checks it, reads only the Google account identifier and stores nothing else from it.</li>
   <li><strong>Google Play</strong> distributes the test build, gives us aggregated install and crash statistics for it, and handles Plus payments.</li>
   <li><strong>RevenueCat</strong> manages Plus subscriptions: it receives your random user number and the purchase details Google Play reports (product, price, store, billing country, transaction and subscription state), never messages. Our server also keeps whether the free trial was used and RevenueCat's user number.</li>
-  <li><strong>Google AdMob</strong> and Google's consent platform serve and gate the optional rewarded video; the Google ads SDK reads device and app information, including the advertising ID.</li>
+  <li><strong>Google AdMob</strong> and Google's consent platform serve and gate the optional rewarded video; from the moment the Google ads SDK starts (when the daily-limit screen offers a video to an eligible Free user), not only when a video is watched, it collects and shares with Google the IP address (used to estimate approximate location), app interactions (such as app launch, taps and video views), diagnostic information, and device identifiers including the advertising ID, for advertising, analytics and fraud prevention.</li>
   <li><strong>PostHog</strong> (EU cloud) receives anonymous usage statistics where you allow them or your region permits them; events hold fixed values only, never messages.</li>
 </ul>
 
