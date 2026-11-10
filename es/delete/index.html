@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eliminar sus datos — Zonu AI (borrador)</title>
+<!-- Translation of docs/legal/site/delete/index.html at 22dc38f (es).
+     DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the deletion timeline, its exceptions, the request fields or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">Borrador — pendiente de revisión jurídica. Esta página no constituye asesoramiento jurídico.</p>
+<h1>Eliminar sus datos</h1>
+<p class="meta">Zonu AI · borrador 2 · 2026-10-28</p>
+
+<h2>Si todavía usa la aplicación</h2>
+<p>Abra Ajustes → Eliminar cuenta y datos. Es la forma más rápida: la aplicación deja de funcionar de inmediato con su identidad anterior, borra su copia local, y sus chats, su memoria y sus recuentos de uso se eliminan de nuestra base de datos activa (un mensaje denunciado es la excepción indicada más abajo) en un plazo de 24 horas. El formulario web que figura más abajo es para quienes ya no tienen la aplicación.</p>
+
+<h2>Qué se elimina y cuándo</h2>
+<p>Cuando elimina desde la aplicación, sus datos salen de nuestra base de datos activa en un plazo de 24 horas y nuestras copias de seguridad cifradas caducan a los 28 días, de modo que la eliminación queda completa en 30 días en total. Para una solicitud realizada en esta página, actuamos en un plazo de 30 días desde una solicitud válida y, después, se aplican los mismos plazos de la base de datos activa y de las copias de seguridad. Las excepciones a ambos casos:</p>
+<ol type="a">
+  <li><strong>Contenido sujeto a un informe abierto:</strong> un mensaje denunciado, junto con la pregunta a la que responde, se conserva 30 días desde el informe, o 90 días si lo estamos investigando, es decir, hasta 90 días más 28 días de copias de seguridad. El texto de su propia nota del informe se elimina junto con su cuenta.</li>
+  <li><strong>Un registro de dispositivo sin contenido y su registro de sincronización:</strong> se conservan 30 días y después hasta 28 días más en las copias de seguridad. No contienen mensajes ni memoria; el registro de sincronización solo contiene identificadores de registros.</li>
+  <li><strong>Una solicitud de eliminación desde esta página:</strong> el registro de la solicitud se elimina como máximo 60 días después de que la envíe, más hasta 28 días en las copias de seguridad.</li>
+  <li><strong>Google:</strong> el proveedor del modelo conserva registros de supervisión de abusos de prompts y respuestas durante 55 días, fuera de nuestra base de datos. Nuestra eliminación no los alcanza.</li>
+</ol>
+<p>Consulte la <a href="../privacy/">política de privacidad</a> para ver el panorama completo.</p>
+
+<h2>Inicio de sesión con Google y suscripciones</h2>
+<p>Si vinculó una cuenta de Google (inicio de sesión opcional, Android), eliminar su cuenta en la aplicación desde cualquier dispositivo elimina sus datos, el vínculo con su cuenta de Google y los datos de cada dispositivo fusionado en la cuenta. Un inicio de sesión posterior con la misma cuenta de Google crea una cuenta nueva. Unir un segundo dispositivo a una cuenta elimina, tras un aviso, los chats anónimos propios de ese dispositivo; no se trasladan.</p>
+<p><strong>Eliminar su cuenta no cancela una suscripción de Google Play.</strong> Cancélela en Google Play en <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>. Nuestro servicio de suscripciones, RevenueCat, puede conservar su propio registro de la compra después de eliminar su cuenta; si lo elimina y cómo aún no está confirmado. Consulte la <a href="../privacy/">política de privacidad</a>.</p>
+
+<h2>Solicitar la eliminación por la web</h2>
+<p>No conocemos su nombre ni su correo electrónico (el inicio de sesión con Google solo guarda el identificador de la cuenta), por lo que solo podemos eliminar datos cuando su solicitud apunta exactamente a un usuario. Si inició sesión con Google y ya no tiene la aplicación, envíe en la solicitud de más abajo un ID de dispositivo que anotó antes, o reinstale la aplicación, inicie sesión con Google y lea un ID de dispositivo en Ajustes → ID del dispositivo (o elimine desde la aplicación); gestionamos cada solicitud a mano.</p>
+<ul>
+  <li>Una solicitud elimina datos únicamente cuando el <strong>ID del dispositivo</strong> que indica (en la aplicación, en Ajustes → ID del dispositivo) coincide con un dispositivo que sigue existiendo (no eliminado). No se acepta ningún otro dato en su lugar.</li>
+  <li>Una dirección de correo electrónico por sí sola no puede identificar a un usuario; se usa únicamente para responderle.</li>
+  <li>Si no podemos verificar una solicitud, no se elimina nada y cada solicitud de este tipo recibe la misma respuesta neutra: «No pudimos verificar esta solicitud. Elimine sus datos desde la aplicación (Ajustes → Eliminar cuenta y datos). Los datos de un usuario cuyos dispositivos no se han conectado a nuestro servidor en 12 meses se eliminan automáticamente.» La respuesta no indica si existe o no ese usuario.</li>
+  <li>El desarrollador gestiona cada solicitud en un plazo de 30 días. El registro de la solicitud contiene solo la dirección de correo electrónico y el ID del dispositivo; se elimina 30 días después de cerrarse la solicitud y, en todo caso, como máximo 60 días después de que la envíe.</li>
+  <li>Cada vez que alguien usó «Borrar datos locales», la aplicación creó una nueva identidad de dispositivo, por lo que una persona puede tener más de una; envíe una solicitud por cada ID del dispositivo que conozca.</li>
+</ul>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/account-delete-request/app.ts (email and device_id required,
+     honeypot website always sent as ''). The form has no action and stays hidden until the inline script runs, so without
+     script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value. -->
+<form id="request-form" aria-label="Formulario de solicitud de eliminación" hidden>
+  <p><label for="email">Dirección de correo electrónico (obligatorio)</label>
+  <input id="email" name="email" type="text" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="email-hint">
+  <span class="hint" id="email-hint">La dirección a la que le comunicaremos el resultado. No se usa para nada más. Por sí sola no puede identificarlo.</span></p>
+  <p><label for="device_id">ID del dispositivo (obligatorio)</label>
+  <input id="device_id" name="device_id" type="text" autocomplete="off" spellcheck="false" required aria-describedby="device_id-hint">
+  <span class="hint" id="device_id-hint">En la aplicación: Ajustes → ID del dispositivo. Un código como 123e4567-e89b-12d3-a456-426614174000.</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>Enviar solicitud</button>
+  <p id="request-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"Hemos recibido su solicitud; la gestionamos en un plazo de 30 días.","invalid":"Revise los campos.","later":"Inténtelo de nuevo más tarde o escriba a purplepixxelstudios@gmail.com.","failed":"No se pudo enviar. Escriba a purplepixxelstudios@gmail.com."};
+  var form = document.getElementById('request-form');
+  var status = document.getElementById('request-status');
+  var button = form.querySelector('button');
+  var CONTROL = /[\u0000-\u001F\u007F-\u009F]/;
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  // As account-delete-request parseEmail: no control character, trimmed, 3..254 code points,
+  // no whitespace inside, exactly one '@' with text either side. Null when invalid.
+  function email(value) {
+    if (CONTROL.test(value)) return null;
+    var v = value.trim();
+    var n = Array.from(v).length;
+    var parts = v.split('@');
+    if (n < 3 || n > 254 || /\s/.test(v) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
+    return v;
+  }
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/account-delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = { email: email(f.email.value), device_id: f.device_id.value.trim(), website: f.website.value };
+    if (body.email === null) { status.textContent = MSG.invalid; f.email.focus(); return; }
+    if (!UUID.test(body.device_id)) { status.textContent = MSG.invalid; f.device_id.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>También puede escribir a <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> con el asunto «Delete my data» (Eliminar mis datos) y los mismos datos.</p>
+
+<nav aria-label="Páginas"><a href="../privacy/">Política de privacidad</a> · <a href="../terms/">Condiciones</a> · <a href="../report/">Denunciar contenido</a> · <a href="../contact/">Contacto para titulares de derechos</a> · <a href="../crisis/">Protocolo de crisis</a></nav>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>データを削除する — Zonu AI（草案）</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Translation of docs/legal/site/delete/index.html at 22dc38f.
+     Owner: the founder. Update trigger: a change to the deletion timeline, its exceptions, the request fields or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">草案 — 法務レビュー待ち。このページは法的助言ではありません。</p>
+<h1>データを削除する</h1>
+<p class="meta">Zonu AI · 草案 2 · 2026-10-28</p>
+
+<h2>まだアプリをお使いの場合</h2>
+<p>設定 → アカウントとデータを削除 を開いてください。これが最も早い方法です。アプリは以前の識別情報での動作を直ちに停止し、ローカルのコピーを消去し、お客様のチャット、メモリー、利用回数は（報告されたメッセージは下記の例外とします）24時間以内に当社の稼働中のデータベースから削除されます。下のウェブフォームは、すでにアプリをお持ちでない方向けです。</p>
+
+<h2>何がいつ削除されるか</h2>
+<p>アプリ内で削除した場合、お客様のデータは24時間以内に当社の稼働中のデータベースから削除され、暗号化バックアップは28日後に期限切れとなるため、削除は合計で30日以内に完了します。このページから行われた請求については、有効な請求から30日以内に対応し、その後は同じ稼働中データベースとバックアップの期限が適用されます。どちらにも次の例外があります。</p>
+<ol type="a">
+  <li><strong>未処理の報告の対象となっているコンテンツ:</strong>報告されたメッセージと、それが答えたご質問は、報告から30日間、調査中の場合は90日間保持されるため、最長で90日にバックアップの28日を加えた期間となります。お客様自身の報告メモの本文は、アカウントとともに削除されます。</li>
+  <li><strong>内容を含まない端末記録と同期用記録:</strong>30日間保持され、その後バックアップにさらに最長28日間残ります。メッセージもメモリーも含まず、同期用記録にはレコード識別子のみが含まれます。</li>
+  <li><strong>このページからの削除請求:</strong>請求の記録は、送信から最長60日後に削除され、バックアップにさらに最長28日間残ります。</li>
+  <li><strong>Google:</strong>モデル提供事業者は、プロンプトと応答の不正利用監視ログを、当社のデータベース外で55日間保持します。当社による削除はそれらには及びません。</li>
+</ol>
+<p>全体像については、<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
+
+<h2>Google ログインとサブスクリプション</h2>
+<p>Google アカウントを連携している場合（任意のログイン、Android）、アプリでどの端末からアカウントを削除しても、お客様のデータ、Google アカウントとの連携、およびそのアカウントに統合されたすべての端末のデータが削除されます。同じ Google アカウントで後からログインすると、新しいアカウントが作成されます。2 台目の端末をアカウントに参加させると、警告のうえ、その端末自身の匿名チャットは削除されます（移されません）。</p>
+<p><strong>アカウントを削除しても Google Play のサブスクリプションは解約されません。</strong><a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a> で Google Play から解約してください。当社のサブスクリプション管理サービス RevenueCat は、アカウント削除後も購入に関する独自の記録を保持することがあります。削除するかどうか、またその方法は未確認です。<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
+
+<h2>ウェブで削除を請求する</h2>
+<p>当社はお客様の氏名やメールアドレスを把握していません（Google ログインで保存されるのはアカウント識別子のみです）。そのため、当社がデータを削除できるのは、請求が特定の1人のユーザーのみを指している場合に限られます。Google でログインしていて、すでにアプリがない場合は、以前に控えたデバイスIDを下記の請求で送るか、アプリを再インストールして Google でログインし、設定 → デバイスID で確認してください（またはアプリ内で削除してください）。各請求は手作業で対応します。</p>
+<ul>
+  <li>請求によってデータが削除されるのは、入力された<strong>デバイスID</strong>（アプリの設定 → デバイスID に表示）が、現在も存在する（削除されていない）端末と一致する場合のみです。他の情報で代えることはできません。</li>
+  <li>メールアドレスだけではユーザーを特定できません。メールアドレスは、お客様に返信するためだけに使用します。</li>
+  <li>請求を確認できない場合は、何も削除せず、そのような請求にはすべて同じ中立的な返信をお送りします。「この請求を確認できませんでした。アプリからデータを削除してください（設定 → アカウントとデータを削除）。12か月間どの端末も当社のサーバーに接続していないユーザーのデータは、自動的に削除されます。」この返信では、該当するユーザーがいるかどうかはお伝えしません。</li>
+  <li>開発者は、各請求を30日以内に処理します。請求の記録にはメールアドレスとデバイスIDのみが含まれ、請求の完了から30日後に、いずれの場合も送信から最長60日後に削除されます。</li>
+  <li>「ローカルデータを消去」を実行するたびに、アプリは新しい端末の識別情報を作成したため、1人の方が複数の識別情報をお持ちの場合があります。ご存じのデバイスIDごとに1件ずつ請求を送信してください。</li>
+</ul>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/account-delete-request/app.ts (email and device_id required,
+     honeypot website always sent as ''). The form has no action and stays hidden until the inline script runs, so without
+     script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value. -->
+<form id="request-form" aria-label="削除請求フォーム" hidden>
+  <p><label for="email">メールアドレス（必須）</label>
+  <input id="email" name="email" type="text" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="email-hint">
+  <span class="hint" id="email-hint">結果をお知らせする宛先です。他の目的には使用しません。これだけではお客様を特定できません。</span></p>
+  <p><label for="device_id">デバイスID（必須）</label>
+  <input id="device_id" name="device_id" type="text" autocomplete="off" spellcheck="false" required aria-describedby="device_id-hint">
+  <span class="hint" id="device_id-hint">アプリ内:設定 → デバイスID。123e4567-e89b-12d3-a456-426614174000 のようなコードです。</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>請求を送信</button>
+  <p id="request-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"請求を受け付けました。30日以内に対応します。","invalid":"入力内容をご確認ください。","later":"しばらくしてからもう一度お試しいただくか、purplepixxelstudios@gmail.com までご連絡ください。","failed":"送信できませんでした。purplepixxelstudios@gmail.com までご連絡ください。"};
+  var form = document.getElementById('request-form');
+  var status = document.getElementById('request-status');
+  var button = form.querySelector('button');
+  var CONTROL = /[\u0000-\u001F\u007F-\u009F]/;
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  // As account-delete-request parseEmail: no control character, trimmed, 3..254 code points,
+  // no whitespace inside, exactly one '@' with text either side. Null when invalid.
+  function email(value) {
+    if (CONTROL.test(value)) return null;
+    var v = value.trim();
+    var n = Array.from(v).length;
+    var parts = v.split('@');
+    if (n < 3 || n > 254 || /\s/.test(v) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
+    return v;
+  }
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/account-delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = { email: email(f.email.value), device_id: f.device_id.value.trim(), website: f.website.value };
+    if (body.email === null) { status.textContent = MSG.invalid; f.email.focus(); return; }
+    if (!UUID.test(body.device_id)) { status.textContent = MSG.invalid; f.device_id.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>件名を「Delete my data」（「データを削除してください」の意）とし、同じ情報を添えて、<a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> に直接ご連絡いただくこともできます。</p>
+
+<nav aria-label="ページ"><a href="../privacy/">プライバシーポリシー</a> · <a href="../terms/">利用規約</a> · <a href="../report/">コンテンツを報告する</a> · <a href="../contact/">権利者向け連絡先</a> · <a href="../crisis/">危機対応プロトコル</a></nav>
+</body>
+</html>

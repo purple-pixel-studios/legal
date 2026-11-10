@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>当有人可能面临自我伤害风险时,我们如何应对 — Zonu AI(草案)</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice. Text = Part A of
+     docs/legal/sb243-crisis-protocol.md (draft 1.2), app name filled in. Owner: the founder (PROD-5).
+     Update trigger: a change to the moderation `crisis` label or policy, the crisis card, crisis-lines.ts, the guardrail crisis rule,
+     the AI disclosure, or a counsel answer.
+     Note: the "What we keep" paragraph deliberately diverges from Part A of docs/legal/sb243-crisis-protocol.md (counts are kept internally; any published figure counts only); the protocol owner (PROD-5) ports the wording back.
+     No scripts, no cookies, no external fonts (GC-3).
+     Translation of docs/legal/site/crisis/index.html at 22dc38f. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">草案——待法律审查。本页不构成法律意见。</p>
+<h1>当有人可能面临自我伤害风险时，我们如何应对</h1>
+<p class="meta">Zonu AI · 草案 1 · 最后更新 2026-10-04</p>
+
+<p>Zonu AI 让您与历史人物的 AI 演绎对话。这些角色是人工智能，不是真实的人物，每个聊天都会这样说明。</p>
+
+<p><strong>检测。</strong>您发送的每条消息在角色作答之前，都会由自动安全分类器进行检查。该分类器会查找表达自杀念头、自杀或自我伤害的内容。它是针对应用的全部六种语言设计的，并已在英语、土耳其语和阿拉伯语中经过测试。</p>
+
+<p><strong>您会看到什么。</strong>如果分类器检测到您可能处于风险之中，应用会显示一张支持卡片，其中包含您所在地区的危机热线，例如美国的 988（自杀与危机生命线），或者提示您拨打当地的紧急电话。角色会被指示在该次回复中跳出其角色设定，用您的语言直截了当地说话，向您提供危机热线并询问您是否安全，并在您安全之前一直保持不进入角色。</p>
+
+<p><strong>角色不会做什么。</strong>索取自我伤害的方法或手段的消息不会被发送给角色；您仍然会看到支持卡片。另有一项单独的检查会在每条回复生成时对其进行审查；鼓励自我伤害的回复会被撤回且不会被保存，但其中一部分可能先出现在屏幕上。</p>
+
+<p><strong>我们保留什么。</strong>我们不会因为您的消息表达了自我伤害的念头而拦截它。我们会将该消息标记为触发了支持卡片的消息，以便统计这种情况发生的频率。我们在内部对此进行计数；我们公布的任何数字都只是计数，绝不包含您的消息或任何可识别您身份的信息。</p>
+
+<p><strong>局限。</strong>自动检测可能遗漏或出错。Zonu AI 不是危机服务，也不能替代专业帮助。如果您处于危险之中，请立即拨打您当地的紧急电话。</p>
+
+<p>最后更新：2026-10-04。另请参见<a href="../privacy/">隐私政策</a>。</p>
+
+<nav aria-label="页面"><a href="../privacy/">隐私政策</a> · <a href="../terms/">使用条款</a> · <a href="../delete/">删除您的数据</a> · <a href="../report/">举报内容</a> · <a href="../contact/">权利人联系方式</a></nav>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>コンテンツを報告する — Zonu AI（草案）</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Translation of docs/legal/site/report/index.html at 22dc38f.
+     Owner: the founder. Update trigger: a change to the report categories, the review targets, the hold periods or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">草案 — 法務レビュー待ち。このページは法的助言ではありません。</p>
+<h1>コンテンツを報告する</h1>
+<p class="meta">Zonu AI · 草案 1 · 2026-10-04</p>
+
+<p>このフォームでは、キャラクターの返信が不正確、不快、性的、自傷に関するものである場合、実在の人物になりすましている場合、またはその他、当社が確認すべきだとお考えの場合に、お知らせいただけます。アプリをお使いの場合は、返信のアクション行から、または返信を長押しすることで、アプリ内から1件の返信を報告することもできます。権利者および公的機関の方は、<a href="../contact/">連絡先ページ</a>をご利用ください。</p>
+
+<h2>報告はどのように扱われるか</h2>
+<ul>
+  <li>報告は開発者に届き、開発者が読みます。自傷、性的な内容、なりすまし、不快な内容に関する報告は24時間以内に、不正確さやその他の事項に関する報告は72時間以内に確認することを目標としています。これらは目標であって保証ではなく、サービスは1人で運営されています。</li>
+  <li>日次サマリーと、あるキャラクターに多くの報告が集まった場合のアラートが、メールで開発者に送られます。サマリーには件数、キャラクターID、カテゴリ、報告IDのみが含まれ、お客様のメモは含まれません。</li>
+  <li>報告は、キャラクターと安全性フィルターの改善に使用されます。<strong>当社は、報告によって返信が削除されること、またはキャラクターが変更もしくは公開停止されることをお約束しません。</strong>報告によってキャラクターが自動的に停止されることはありません。</li>
+  <li>報告者に回答するかどうか、およびその方法:[公開前に創業者が確認]。</li>
+  <li>報告は、任意のメモと連絡先とともに30日間、調査中の場合は90日間保持され、その後削除されます。アプリから報告した返信と、それが答えたご質問は、お客様がアカウントを削除しても同じ期間保持されます。お客様のメモはアカウントとともに削除されます。</li>
+</ul>
+<p>非公開にしておきたいメッセージ本文や、他の人についての詳細は、メモに書かないでください。身の危険がある場合は、お住まいの地域の緊急通報番号にご連絡ください。このフォームは24時間体制で監視されていません。</p>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/public-report/app.ts (persona_id and category required, note
+     and contact optional, honeypot website always sent as ''). The form has no action and stays hidden until the inline script
+     runs, so without script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value.
+     The character list is the enabled personas (packages/personas/*/card.en.json availability.enabled), checked by forms.test.ts. -->
+<form id="report-form" aria-label="報告フォーム" hidden>
+  <p><label for="persona_id">キャラクター（必須）</label>
+  <select id="persona_id" name="persona_id" required>
+    <option value="">返信を出したキャラクターを選んでください。</option>
+    <option value="ibn-sina">イブン・シーナー（アヴィセンナ）</option>
+    <option value="shakespeare">ウィリアム・シェイクスピア</option>
+    <option value="cleopatra">クレオパトラ</option>
+    <option value="socrates">ソクラテス</option>
+    <option value="sor-juana">ソル・フアナ・イネス・デ・ラ・クルス</option>
+    <option value="franklin">ベンジャミン・フランクリン</option>
+    <option value="curie">マリー・キュリー</option>
+    <option value="leonardo">レオナルド・ダ・ヴィンチ</option>
+    <option value="confucius">孔子</option>
+    <option value="murasaki">紫式部</option>
+  </select></p>
+  <p><label for="category">どのような問題ですか?（必須）</label>
+  <select id="category" name="category" required>
+    <option value="">—</option>
+    <option value="inaccurate">不正確</option>
+    <option value="offensive">不快</option>
+    <option value="sexual">性的</option>
+    <option value="self_harm">自傷</option>
+    <option value="impersonation">なりすまし</option>
+    <option value="other">その他</option>
+  </select></p>
+  <p><label for="note">メモ（任意）</label>
+  <textarea id="note" name="note" rows="4" maxlength="300" aria-describedby="note-hint"></textarea>
+  <span class="hint" id="note-hint">返信の内容と、それが問題である理由。約300文字。改行も可能です。</span></p>
+  <p><label for="contact">連絡先（任意）</label>
+  <input id="contact" name="contact" type="text" inputmode="email" autocomplete="email" maxlength="254" aria-describedby="contact-hint">
+  <span class="hint" id="contact-hint">こちらからご連絡できるようにしたい場合は、メールアドレス。254文字以内。</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>報告を送信</button>
+  <p id="report-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"ありがとうございます。報告を受け付けました。","invalid":"入力内容をご確認ください。","later":"しばらくしてからもう一度お試しいただくか、purplepixxelstudios@gmail.com までご連絡ください。","failed":"送信できませんでした。purplepixxelstudios@gmail.com までご連絡ください。"};
+  var form = document.getElementById('report-form');
+  var status = document.getElementById('report-status');
+  var button = form.querySelector('button');
+  // As public-report: every C0/C1 control character except a line break is refused in the note.
+  var CONTROL = /[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/;
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/public-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = {
+      persona_id: f.persona_id.value,
+      category: f.category.value,
+      note: f.note.value.replace(/\r\n?/g, '\n'),
+      contact: f.contact.value,
+      website: f.website.value
+    };
+    if (!body.persona_id) { status.textContent = MSG.invalid; f.persona_id.focus(); return; }
+    if (!body.category) { status.textContent = MSG.invalid; f.category.focus(); return; }
+    if (Array.from(body.note).length > 300 || CONTROL.test(body.note)) { status.textContent = MSG.invalid; f.note.focus(); return; }
+    if (Array.from(body.contact).length > 254) { status.textContent = MSG.invalid; f.contact.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>件名を「Report content」（「コンテンツの報告」の意）として、<a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> に直接ご連絡いただくこともできます。</p>
+
+<nav aria-label="ページ"><a href="../privacy/">プライバシーポリシー</a> · <a href="../terms/">利用規約</a> · <a href="../delete/">データを削除する</a> · <a href="../contact/">権利者向け連絡先</a> · <a href="../crisis/">危機対応プロトコル</a></nav>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gizlilik politikası — Zonu AI (taslak)</title>
+<!-- DRAFT 2 (2026-10-28): S4 additions (statistics, ads, subscriptions, Google sign-in) translated from the en page by the doc-writer; NOT reviewed by a native speaker (SR-1) and not by counsel.
+     Translation of docs/legal/site/privacy/index.html at 22dc38f.
+     DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Source of truth: persona repo docs/legal/site/privacy/index.html; supersedes docs/legal/privacy-policy-interim.html at publish.
+     Owner: the founder (PROD-4/PROD-6). Update trigger: a new data flow, processor, retention rule or deletion path; the S4 SDKs (ads, analytics) landing; a counsel answer.
+     Sentry statements: docs/research/R18-crash-reporting.md (Verdict, section 1, section 5) and docs/superpowers/plans/2026-10-04-s3-observability.md (S3 observability plan, on main since f610b54).
+     No scripts, no cookies, no external fonts (GC-3). Citations for each claim: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { border: 1px solid #8886; padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">Taslak — hukuki incelemeyi bekliyor. Bu sayfa uygulamanın ne yaptığını anlatır ve hukuki tavsiye değildir.</p>
+<h1>Gizlilik politikası</h1>
+<p class="meta">Zonu AI · taslak 2 · 2026-10-28</p>
+
+<p>Zonu AI, tarihî şahsiyetlerin yapay zekâ canlandırmalarıyla konuşmanızı sağlar. Karakterler yapay zekâdır, gerçek kişiler değildir. Bu sayfa, uygulamanın ve bu web sitesinin hangi verileri işlediğini, bunları işlememize kimlerin yardım ettiğini, ne kadar süre sakladığımızı ve bunları nasıl silebileceğinizi anlatır. Bir kısmı, bu sayfaların eşlik ettiği uygulama sürümüyle birlikte gelen özellikleri anlatır (18+ adımı, hesap silme, bildirimler, çökme raporları, anonim istatistikler, reklamlar, Plus abonelikleri ve isteğe bağlı Google ile giriş); bir özellik henüz sizin sürümünüzde yoksa, o kısım henüz sizin için geçerli değildir.</p>
+
+<h2>Sorumlu kim</h2>
+<p>Uygulamayı bireysel bir geliştirici yayımlar. Gizlilikle ilgili talepler için iletişim: <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a>. Hak sahiplerinden ve makamlardan gelen içerik bildirimleri için <a href="../contact/">iletişim sayfasına</a> bakın.</p>
+
+<h2>18 yaş ve üzeri</h2>
+<p>Zonu AI 18 yaş ve üzeri içindir. İlk açılışta uygulama yaş aralığınızı sorar: önce mağazadan bir yaş sinyali ister, sinyal yoksa doğum ayınızı ve yılınızı seçmenizi ister. Doğum ayı ve yılı cihazınızda kalır ve karardan sonra saklanmaz. Sunucumuz yalnızca cihazın yetişkin yaş aralığında olduğunu ve bu yanıtın nereden geldiğini (mağaza sinyali veya sizin yanıtınız) saklar. Sunucu, bir yanıtın doğru olup olmadığını doğrulayamaz. Sinyal ya da yanıtınız 18 yaş altını gösteriyorsa uygulama sohbeti açmaz.</p>
+
+<h2>Neleri topluyoruz</h2>
+<ul>
+  <li><strong>Bir cihaz kimliği.</strong> İlk açılışta uygulama rastgele bir cihaz kimliği ve rastgele bir sır oluşturur. Sunucumuz cihaz kimliğini, cihaza atadığımız dahilî bir kayıt numarasını, sırrın tek yönlü bir özetini (sırrın kendisini asla), platformu, saat diliminizi, oturum açmak için kullanılan bir doğrulama (attestation) durumunu ve imza anahtarı etiketini, ayrıca cihazın ilk ne zaman kaydolduğunu ve en son ne zaman bağlandığını saklar. Ayrıca iki harfli bir mağaza ülke ipucu saklayabilir: uygulama, Google Play hesabınızın ülkesini abonelik SDK'sı (RevenueCat) aracılığıyla okur ve cihaz erişimini yenilediğinde gönderir. Bunu bazı ülkelerde ödüllü reklamları kapatmak veya ödülü küçültmek için kullanırız (asla daha cömert yapmak için değil); yalnızca Ücretsiz kullanıcılar için sunucumuz ayrıca bunu, hiçbir kullanıcı veya cihaz kimliği olmadan, günlük toplu kullanım maliyeti istatistiklerinin ülkesi olarak kaydeder. İpucu cihaz kaydıyla birlikte silinir; günlük toplu istatistik hiçbir kimlik taşımaz ve maliyet istatistikleri için saklanır. Ad, e-posta adresi veya telefon numarası yoktur; Google ile giriş isteğe bağlıdır ("İsteğe bağlı Google ile giriş" bölümüne bakın).</li>
+  <li><strong>Yaş aralığınız</strong> (yukarıya bakın): yetişkin aralığı ve kaynağı; doğum tarihi yok.</li>
+  <li><strong>Sohbetleriniz.</strong> Gönderdiğiniz mesajlar ve aldığınız yanıtlar; zamanı, karakteri, yanıtı veren karakter kartının sürümü ile modeli ve kullanılan token sayısıyla birlikte. Konuşmaların oturumlar arasında çalışması için her mesaj sunucumuzda saklanır. Bir mesaj ayrıca güvenlik işaretleri taşıyabilir ("Güvenlik kontrolleri" bölümüne bakın).</li>
+  <li><strong>Hafıza.</strong> Uygulamanın bir karaktere söylediklerinize dair tuttuğu kısa olgular ve sürekli güncellenen bir özet ("Hafıza" bölümüne bakın).</li>
+  <li><strong>Günlük kullanım sayıları.</strong> Ücretsiz günlük hakkı uygulayabilmek için her gün, ne kadar kullandığınıza dair sayıları (token ve mesaj eşdeğeri) tutarız. Sayılar mesaj metni içermez.</li>
+  <li><strong>Bildirimler.</strong> Bir karakterin yanıtını bildirirseniz bildirimi saklarız: yanıtın karakteri ve sürümü, seçtiğiniz kategori, isteğe bağlı notunuz, zaman ve bildirilen mesaja bir bağlantı. Web sitesinden gönderilen bir bildirim karakteri, kategoriyi, isteğe bağlı notunuzu ve isteğe bağlı iletişim bilginizi saklar.</li>
+  <li><strong>IP adresinizin anahtarlı bir özeti</strong> ve cihaz başına sayaçlar; yalnızca bir ağın kaç kimlik oluşturabileceğini, bir cihazın erişimini ne sıklıkla yenileyebileceğini ve web sitesi formlarının ne sıklıkla kullanılabileceğini sınırlamak için kullanılır. Adresi değil, anahtarlı bir özeti saklarız (IPv6 için /64 ağının özeti). Sayaçlar yaklaşık iki gün sonra temizlenir.</li>
+  <li><strong>Çökme ve hata raporları</strong> ("Bunu bizim için kimler işliyor" bölümüne bakın).</li>
+  <li><strong>Hizmet günlükleri</strong>; hataları ve istek durumunu kaydeder. Kendi günlüklerimiz mesaj metni içermez. Barındırma sağlayıcılarımızın altyapı günlükleri IP adresinizi ve istek ayrıntılarını kısa bir süre boyunca kaydeder (Supabase planımızda yaklaşık bir gün).</li>
+  <li><strong>Google ile giriş yaparsanız (isteğe bağlı):</strong> yalnızca verilerinize bağlanan Google hesap tanımlayıcınız. E-posta adresiniz veya adınız değil ("İsteğe bağlı Google ile giriş" bölümüne bakın).</li>
+  <li><strong>Plus'a abone olursanız:</strong> sunucumuz planınızı, ne zaman bittiğini, mağazayı, satın almanın fatura ülkesini, ücretsiz denemenin kullanılıp kullanılmadığını ve RevenueCat kullanıcı numarasını tutar; ödemenin kendisini Google Play ve RevenueCat yürütür ("Plus abonelikleri" bölümüne bakın).</li>
+  <li><strong>Ödüllü video izlerseniz:</strong> yalnızca videonun onay numarası ve kazandırdığı ek mesajlar ("Reklamlar" bölümüne bakın).</li>
+  <li><strong>Anonim kullanım istatistikleri</strong>, yalnızca siz izin verirseniz veya bölgenizin kuralları izin verirse ("Anonim kullanım istatistikleri" bölümüne bakın).</li>
+</ul>
+
+<h2>Nasıl kullanılır</h2>
+<p>Bu verileri yalnızca sohbet hizmetini çalıştırmak, ücretsiz hakkı uygulamak, hizmeti güvende tutmak, bildirimleri ve silme taleplerini işleme almak, çökmeleri gidermek ve kötüye kullanımı önlemek için kullanırız. Mesajlarınız <strong>yapay zekâ modellerini eğitmek için asla kullanılmaz</strong>. Uygulama, Avrupa Ekonomik Alanı (AEA), Birleşik Krallık ve İsviçre'de siz izin verene kadar hiçbir şey göndermeyen bir anonim istatistik SDK'sı ile günlük sınır ekranı uygun bir Ücretsiz kullanıcıya ödüllü video sunduğunda, herhangi bir dokunuştan önce başlayan bir reklam SDK'sı içerir (bkz. "Anonim kullanım istatistikleri" ve "Reklamlar"). Mesajlarınızı reklam amacıyla kullanmayız. Her amaç için hukuki dayanak: [yayımdan önce hukuk müşaviri teyit edecek].</p>
+
+<h2>Güvenlik kontrolleri (moderasyon)</h2>
+<p>Gönderdiğiniz her mesaj, karakter yanıt vermeden önce otomatik bir sınıflandırıcı (bir Google Gemini çağrısı) tarafından kontrol edilir. Uygulamanın yapmadığı bir şeyi isteyen bir mesaj (örneğin cinsel içerik, nefret, ciddi zarar için talimatlar) reddedilir ve sunucumuzda saklanmaz; kontrol kullanılamadığında mesaj gönderilmez (güvenli tarafta kalır). Kendine zarar verme düşüncelerini dile getiren bir mesaj engellenmez: karaktere özenle yanıt vermesi söylenir, uygulama bölgeniz için bir kriz hattı içeren bir destek kartı gösterir ve mesajı, kartı tetiklediğini belirten bir işaretle saklarız. Bunları dahilî olarak sayarız; yayımlayacağımız her rakam yalnızca sayılardan oluşur, mesaj metni içermez ve sizi tanımlayan hiçbir şey içermez. Bir yanıt da yazılırken kontrol edilir; kuralları ihlal eden bir yanıt geri çekilir ve metni kaydedilmez, ancak bir kısmı ekranınızda önceden görünmüş olabilir. Otomatik kontroller bir şeyi gözden kaçırabilir veya hata yapabilir. <a href="../crisis/">Kendine zarar verme riskine nasıl yanıt verdiğimize</a> bakın.</p>
+
+<h2>Hafıza</h2>
+<p>Hafıza varsayılan olarak açıktır. Mesajlarınızın yaklaşık her dördünde bir ve bir konuşma boşta kaldıktan sonra yeniden, ek bir Gemini çağrısı o konuşmanın son mesajlarını (sizinkileri ve karakterin yanıtlarını) okur ve sizinle ilgili kısa ifadeleri (her biri en fazla 150 karakter) altı türde tutar: kimlik, geçmiş, ilgi alanları, tercihler, hedefler ve diğer. Her ifade, geldiği sizin mesajınıza işaret eder. Ayrıca konuşma başına sürekli güncellenen bir özet tutar. Olgular ve özet isteme (prompt) eklenir; böylece karakter bunları hatırlayabilir.</p>
+<ul>
+  <li>Uygulama, on iki hassas olgu türünü asla saklamayacak şekilde tasarlanmıştır: sağlık, cinsellik, cinsiyet kimliği, din, siyaset, etnik köken, sendika üyeliği, ceza konuları, engellilik, resmî kimlik numaraları, mali hesaplar ve göçmenlik. Bu, modele verilmiş bir talimat ile her olgu üzerinde bir kod kontrolü ve ikinci bir sınıflandırıcıdır; yine de gözden kaçırabilir. Sohbette yazdıklarınız, ne içerirse içersin, yazıldığı gibi saklanır; bu nedenle lütfen hassas ayrıntıları paylaşmayın.</li>
+  <li>Destek kartını tetikleyen mesajlar hafıza için kullanılmaz.</li>
+  <li>Hafıza ekranında hafızayı kapatabilir, olguların karakterler arasında paylaşılıp paylaşılmayacağını seçebilir, tek bir olguyu silebilir veya tüm hafızayı temizleyebilirsiniz. Hafızayı temizlemek olguları ve özetleri tümüyle siler.</li>
+</ul>
+
+<h2>İsteğe bağlı Google ile giriş</h2>
+<p>Sohbetlerinizin, hafızanızın ve planınızın başka bir cihaza da gelmesi için Google hesabınızı bağlayabilirsiniz. Bu isteğe bağlıdır; uygulama onsuz da çalışır. Android'de sunulur; iOS'ta henüz sunulmaz. Giriş yaptığınızda cihazınız Google'ın giriş belirtecini sunucumuza gönderir; sunucu bunu Google'ın genel anahtarlarıyla doğrular. Yalnızca Google hesap tanımlayıcınızı (Google'ın atadığı kalıcı bir numara) verilerinize bağlı olarak saklarız. E-posta adresinizi veya adınızı saklamayız; belirteç saklanmaz ve günlüklerimize yazılmaz.</p>
+<p>Kendi anonim sohbetleri olan ikinci bir cihazda giriş yaparsanız, bu sohbetler hesabınıza taşınmaz. Cihazda sohbet varsa uygulama sizi önce uyarır; onaylarsanız bu sohbetler hesap silmeyle aynı yoldan silinir ve cihaz hesabınızın verileriyle devam eder. Günlük hakkınız ve Plus planınız önce hesabınıza birleştirilir. Hesabınızı silmek Google hesabınıza olan bağlantıyı da siler ("Verilerinizi silme" bölümüne bakın).</p>
+
+<h2>Anonim kullanım istatistikleri</h2>
+<p>İzin verirseniz uygulama, PostHog'a (AB bulutu) anonim kullanım istatistikleri gönderir: uygulamanın açıldığı, bu kurulumdan ilk mesajınızı gönderdiğiniz (metin değil, karakter bilgisiyle), günlük sınır ekranının veya Plus ekranının gösterildiği ya da bir satın almanın tamamlandığı gibi kısa olaylar. Her olay yalnızca sabit değerler, uygulama dili ve analiz kitaplığının adı ile sürümünü taşır. Asla mesajlarınızı, adınızı, e-postanızı veya hesap tanımlayıcınızı taşımaz ve kişi profili oluşturulmaz. İstatistik tanımlayıcısı rastgeledir, cihaz kimliğinizden ve Google hesabınızdan ayrıdır; "Yerel verileri temizle" ve hesap silme onu cihazdan siler.</p>
+<ul>
+  <li><strong>AEA'da, Birleşik Krallık'ta ve İsviçre'de</strong> ve uygulamanın nerede olduğunuzu belirleyemediği her yerde, sohbet ekranındaki kartta İzin ver'e dokunana kadar PostHog'a hiçbir şey gönderilmez ("Zonu AI'ın gelişmesine, mesajlarınızı asla içermeyen anonim kullanım istatistikleri paylaşarak yardım edin.").</li>
+  <li><strong>Diğer yerlerde</strong> istatistikler varsayılan olarak açıktır ve Ayarlar'dan kapatabilirsiniz ("Anonim kullanım istatistiklerini paylaş").</li>
+  <li>Kapatmak, uygulamanın yeni olay kaydetmesini durdurur. Kapatmadan hemen önce kaydedilmiş birkaç olay yine de gönderilebilir. Seçiminiz cihazda saklanır; "Yerel verileri temizle" ve hesap silme onu sıfırlamaz.</li>
+  <li>PostHog, her sunucu gibi, her istekle IP adresinizi alır. Uygulama PostHog'un konum aramasını kapatır; projenin adresi atacak şekilde ayarlanması planlanmıştır (henüz teyit etmediğimiz bir ayar). PostHog, kullandığımız ücretsiz planda olayları en az bir yıl saklar ve bundan sonra silinmesini garanti etmez (posthog.com/docs/data/events-retention; posthog.com/pricing). Olaylar sizinle ilişkilendirilebilecek hiçbir şey taşımaz; bu yüzden tek bir kişinin olaylarını bulamaz veya silemeyiz.</li>
+</ul>
+
+<h2>Reklamlar</h2>
+<p>Bir Ücretsiz kullanıcıya, kullanımın dördüncü gününden itibaren ve sunulduğu ülkelerde isteğe bağlı bir ödüllü video sunulabilir; sonuna kadar izlenirse ek mesaj kazandırır. Plus kullanıcılarına asla sunulmaz. Videolar Google AdMob üzerinden gelir. Günlük sınır ekranı uygun bir Ücretsiz kullanıcıya video seçeneğini gösterdiğinde ve Google'ın onay platformu (UMP) reklam isteklerine izin verdiğinde, uygulama Google'ın reklam SDK'sını başlatır ve siz hiçbir şeye dokunmadan önce bir videoyu önceden yükler. Herhangi bir reklamdan önce uygulama, bölgenizde onay gerekip gerekmediğini Google'ın onay platformuna (UMP) sorar; AEA'da, Birleşik Krallık'ta, İsviçre'de ve Google'ın mesajlarının gerektirecek şekilde yapılandırıldığı her yerde onay formu yalnızca video izlemek için dokunduğunuzda gösterilir ve daha sonra Ayarlar'dan ("Reklam gizlilik tercihleri") yeniden açabilirsiniz. Google'ın reklam SDK'sı, AdMob için Google'ın tarif ettiği gibi, Android reklam kimliği dahil cihaz ve uygulama bilgilerini okur. Reklam içeriği derecelendirmesini MA (yetişkin izleyici) olarak ayarlarız. Bir videoyu bitirdiğinizde Google bunu sunucumuza onaylar; biz yalnızca bu onayın işlem numarasını, kazandırdığı mesajlarla birlikte saklarız; reklam isteğine eklediğimiz tek şey, yalnızca sunucumuzun açabildiği (şifreli bir kullanıcı numarası taşıyan) tek kullanımlık mühürlü bir belirteçtir; açık hâlde hesap tanımlayıcısı ve cihaz sırrı göndermeyiz.</p>
+<p>Onay platformunun denetimi, uygulama başlarken veya Ayarlar'ı açtığınızda, hiç reklam görmeyen kullanıcılar için bile çalışabilir; böylece uygulama hangi kuralların geçerli olduğunu bilir. Hiçbir form göstermez.</p>
+
+<h2>Plus abonelikleri</h2>
+<p>Plus, Google Play üzerinden satın alınır. Abonelik hizmetimiz RevenueCat, rastgele kullanıcı numaranızı (sunucumuzun verileriniz için kullandığı numara) ve Google Play'in bildirdiği satın alma ayrıntılarını alır: ürün, fiyat, mağaza, fatura ülkesi, işlem ve abonelik durumu. Mesajları almaz. Sunucumuz planınızı, ne zaman bittiğini, mağazayı, fatura ülkesini, ücretsiz denemenin kullanılıp kullanılmadığını ve RevenueCat kullanıcı numarasını saklar. <strong>Hesabınızı silmek bir Google Play aboneliğini iptal etmez</strong>: aboneliği Google Play'de <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a> adresinden iptal edin. Hesabınızı sildikten sonra RevenueCat satın almaya ilişkin kendi kaydını tutabilir; bunu silip silmediği ve nasıl sildiği henüz teyit etmediğimiz bir sorudur.</p>
+
+<h2>Bunu bizim için kimler işliyor</h2>
+<table>
+  <thead><tr><th>Sağlayıcı</th><th>Ne için</th><th>Ne alır, nerede</th></tr></thead>
+  <tbody>
+    <tr><td>Supabase</td><td>Veritabanı ve sunucu fonksiyonları</td><td>Yukarıda sayılan her şey; çökme ve hata raporları (Sentry) hariç. Veritabanı AB'dedir (Frankfurt); fonksiyonlar çağıran tarafa en yakın bölgede çalışır ve bu bölge AB dışında olabilir. Cloudflare ağı istekleri yönlendirir ve IP adresinizi işler.</td></tr>
+    <tr><td>Google (Gemini API, ücretli katman)</td><td>Karakter yanıtları, güvenlik kontrolleri ve hafıza çıkarımı</td><td>Karakterin talimatları, konuşmanın en fazla sekiz son mesajı, hafıza bloğunuz, uygulamanın ayarlı olduğu dil ve yeni mesajınız; hafıza çıkarımı son mesaj çiftlerini okur. Google bunları AB dışında işleyebilir veya önbelleğe alabilir. Google'ın ücretli katman şartları, istemleri ve yanıtları ürünlerini geliştirmek için kullanmadığını belirtir. Google, istemleri ve yanıtları kötüye kullanım izleme günlüklerinde 55 gün saklar.</td></tr>
+    <tr><td>Sentry (Functional Software, Inc. d/b/a Sentry, ABD)</td><td>Uygulamadan ve sunucu fonksiyonlarından çökme ve hata raporları</td><td>Bu sayfaların eşlik ettiği uygulama sürümünün yapılandırılmış davranışı: hatanın türü ve kodun neresinde oluştuğu, uygulama sürümü ile cihazın ve uygulamanın teknik ayrıntıları. Olaylar Sentry'nin AB bölgesinde (Frankfurt) saklanır ve ücretsiz planda 30 gün tutulur. Mesaj metni, ekran görüntüsü veya kullanıcı kimliği eklememesi ve IP adreslerini saklanan olaylardan uzak tutması için yapılandırırız. Aktarımlar Sentry'nin veri işleme sözleşmesi kapsamındadır (AB–ABD Veri Gizliliği Çerçevesi ve standart sözleşme maddeleri).</td></tr>
+    <tr><td>Resend</td><td>Bir güvenlik veya kötüye kullanım eşiği aşıldığında geliştiriciye uyarı e-postası ve günlük bir özet</td><td>Kullanıcı verisi yok: e-posta yalnızca sayıları, karakter kimliklerini, kategorileri ve bildirim kimliklerini içerir; asla mesaj metni veya notlar içermez.</td></tr>
+    <tr><td>GitHub</td><td>Bu web sayfalarını barındırır ve şifreli gecelik veritabanı yedeklerimizi tutar</td><td>Sayfalar: GitHub, her web barındırıcısı gibi tarayıcınızın bir sayfayı yüklemek için yaptığı istekleri alır. Yedekler: elimizdeki bir anahtarla şifrelenmiş dosyalar, 28 gün saklanır.</td></tr>
+    <tr><td>Google Play</td><td>Uygulamayı dağıtır ve Plus ödemelerini yürütür</td><td>Bize toplulaştırılmış yükleme ve çökme istatistikleri ulaşır. Bir Plus satın alımında ödeme ve abonelik kayıtlarını Google Play kendi koşullarıyla tutar.</td></tr>
+    <tr><td>RevenueCat</td><td>Plus için abonelik yönetimi</td><td>Rastgele kullanıcı numaranız ve Google Play'in bildirdiği satın alma ayrıntıları (ürün, fiyat, mağaza, fatura ülkesi, işlem ve abonelik durumu); mesaj yok. RevenueCat'in bunları nerede sakladığı: henüz teyit edilmedi.</td></tr>
+    <tr><td>Google AdMob ve Kullanıcı Mesajlaşma Platformu</td><td>Ücretsiz kullanıcılar için ödüllü videolar ve reklam onayı</td><td>Bir video izlediğinizde Google reklam SDK'sının okuduğu cihaz ve uygulama bilgileri, Android reklam kimliği dahil; onay platformunun bölge denetimi. Bize yalnızca bitmiş bir video için bir işlem numarası ulaşır.</td></tr>
+    <tr><td>PostHog (AB bulutu)</td><td>Anonim kullanım istatistikleri, yalnızca siz izin verirseniz veya bölgenizin kuralları izin verirse</td><td>Sabit değerli olaylar, uygulama dili ve rastgele bir istatistik tanımlayıcısı; IP adresiniz her istekle ulaşır ve atılacak şekilde ayarlanması planlanmıştır (ayar henüz teyit edilmedi). Ücretsiz planda en az bir yıl saklanır.</td></tr>
+    <tr><td>Google (Oturum Açma)</td><td>İsteğe bağlı giriş</td><td>Google girişinizi cihazınızda yürütür; sunucumuz Google'ın belirtecini alır ve yalnızca hesap tanımlayıcısını saklar.</td></tr>
+  </tbody>
+</table>
+<p>Bu web sitesi çerez, izleme betiği veya harici yazı tipi kullanmaz. Silme ve bildirim sayfaları, yalnızca doldurduğunuz formu göndermek için kendilerine ait küçük bir betik çalıştırır.</p>
+
+<h2>AB dışına aktarımlar</h2>
+<p>Birincil veriler Frankfurt'tadır. Google ve Supabase'in fonksiyon çalışma ortamı verileri başka ülkelerde işleyebilir; Sentry ise olayları AB'de saklayan bir ABD şirketidir. Her aktarım için mekanizma: [yayımdan önce hukuk müşaviri teyit edecek]. RevenueCat, PostHog ve Google'ın reklam hizmetleri verileri kendi koşullarıyla işler (her birinin nerede sakladığı: henüz teyit edilmedi).</p>
+
+<h2>Cihazınızda</h2>
+<p>Uygulama, sohbetlerinizin yerel bir kopyasını ve cihaz sırrınızı, cihaz yedeklerinin dışında tutulan uygulamaya özel depolamada saklar. Ayarlar'daki "Yerel verileri sil" her ikisini de cihazdan siler. Sunucumuzdaki kopyayı silmez; bunun için hesap silmeyi kullanın.</p>
+
+<h2>Ne kadar süre saklıyoruz ve verilerinizi silme</h2>
+<p>Konuşmalar siz silene kadar saklanır. Hesabınızı ve verilerinizi uygulamada (Ayarlar → Hesabı ve verileri sil) veya artık uygulamanız yoksa <a href="../delete/">silme sayfasında</a> silebilirsiniz. Uygulamadan silme hemen etkili olur: uygulama o kimlikle çalışmayı bırakır, yerel kopyasını siler ve veriler 24 saat içinde canlı veritabanımızdan kaldırılır. Şifreli yedekler 28 gün sonra süresi dolarak silinir; dolayısıyla uygulamadan silme toplamda 30 gün içinde tamamlanır. Silme sayfasından yapılan bir talepte, geçerli bir talepten itibaren 30 gün içinde işlem yaparız; ardından aynı canlı veritabanı ve yedek süreleri uygulanır. Her ikisine de istisnalar:</p>
+<ol type="a">
+  <li><strong>Açık bir bildirime konu içerik.</strong> Birinin bildirdiği bir mesaj ve yanıtladığı soru bildirimden itibaren 30 gün, incelediğimiz durumda ise 90 gün saklanır ve sonra silinir; yedeklerle birlikte bu en fazla 90 gün artı 28 gün olabilir. Bir bildirimdeki kendi notunuzun metni, hesabınızla birlikte silinir.</li>
+  <li><strong>İçeriksiz bir cihaz kaydı ve eşitleme günlüğü.</strong> Cihazınızın var olduğuna dair kayıt (mesaj yok, hafıza yok) ile bu cihaz için tutulan, kayıt tanımlayıcılarından oluşan eşitleme günlüğü (yalnızca tanımlayıcılar, metin yok), eski kimliğin sessizce yeniden kaydolamaması için 30 gün saklanır; ardından yedeklerde en fazla 28 gün daha kalır.</li>
+  <li><strong>Bir web sitesi silme talebi.</strong> Talep kaydı yalnızca girdiğiniz e-posta adresini ve Cihaz kimliğini içerir; kayda yalnızca sunucumuz erişebilir, uygulama asla. Talep kapatıldıktan 30 gün sonra, her durumda aldığımızdan en geç 60 gün sonra silinir; ayrıca yedeklerde en fazla 28 gün kalır. Cihaz kimliği hâlâ var olan bir cihazla eşleşmezse hiçbir şey silmeyiz ve bu tür her talebe aynı tarafsız yanıtı göndeririz. GDPR m. 11(2)'ye dayanıyoruz: Cihaz kimliği olmadan bir kullanıcıyı belirleyebilecek hiçbir veri tutmuyoruz.</li>
+  <li><strong>Veritabanımızın dışındaki sağlayıcılar.</strong> Google, istemlerin ve yanıtların kötüye kullanım izleme günlüklerini 55 gün saklar; bizim silmemiz bunlara ulaşmaz.</li>
+</ol>
+<p>Bir Google hesabı bağladıysanız, hesabınızı herhangi bir cihazdan silmek bağlantıyı ve ona birleştirilmiş her cihazın verilerini de siler. Aynı Google hesabıyla sonradan giriş yapmak yeni bir hesap başlatır. <strong>Hesabınızı silmek bir Google Play aboneliğini iptal etmez</strong>; <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a> adresinden iptal edin. Google, RevenueCat, PostHog ve AdMob'un elindeki veriler veritabanımızın dışındadır: PostHog olayları size ait hiçbir tanımlayıcı taşımaz ve tek bir kişi için bulunamaz veya silinemez; cihazınızdaki istatistik tanımlayıcısını "Yerel verileri temizle" ve hesap silme siler.</p>
+<p>Hiçbir cihazınız 12 aydır sunucumuza bağlanmamışsa, hesap verilerinizi uygulamadan silmeyle aynı yolla otomatik olarak sileriz.</p>
+<p>Hafıza olguları ve özetleri, hafızayı temizlediğinizde veya bir konuşmayı sildiğinizde hemen silinir. Kısa ömürlü teknik veriler (IP özetleri ve sayaçlar, yaklaşık iki gün; barındırma günlükleri, yaklaşık bir gün; çökme raporları, 30 gün) kendiliğinden süresi dolarak silinir.</p>
+
+<h2>Çocuklar</h2>
+<p>Uygulama 18 yaş ve üzeri içindir ve daha küçükler için bir modu yoktur. Bir reşit olmayanın uygulamayı kullandığına inanıyorsanız yukarıdaki iletişim adresine yazın; onunla ilişkilendirebildiğimiz verileri sileriz.</p>
+
+<h2>Haklarınız</h2>
+<p>Yukarıdaki iletişim adresine yazarak verilerinizin bir kopyasını veya silinmesini talep edebilir ve işlenmesine itiraz edebilirsiniz. Uygulama olmadan kimliğinizi, silme sayfasının açıkladığı şekilde Cihaz kimliğinizle belirtirsiniz; Google ile giriş yaptıysanız ve artık uygulamanız yoksa, daha önce not ettiğiniz bir Cihaz kimliğini gönderin ya da uygulamayı yeniden yükleyip Google ile giriş yapın ve Cihaz kimliğini Ayarlar → Cihaz kimliği altından okuyun (veya uygulamada silin); web taleplerini elle işleriz. Ayrıca yerel veri koruma makamınıza şikâyette bulunabilirsiniz. Ülkenize özgü ek haklar: [yayımdan önce hukuk müşaviri teyit edecek].</p>
+
+<h2>Değişiklikler</h2>
+<p>Bu politika değişirse, en üstteki tarih de değişir.</p>
+
+<nav aria-label="Sayfalar"><a href="../terms/">Kullanım koşulları</a> · <a href="../delete/">Verilerinizi silin</a> · <a href="../report/">İçerik bildirin</a> · <a href="../contact/">Hak sahibi iletişimi</a> · <a href="../crisis/">Kriz protokolü</a></nav>
+</body>
+</html>

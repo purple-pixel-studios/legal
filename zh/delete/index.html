@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>删除您的数据 — Zonu AI(草案)</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the deletion timeline, its exceptions, the request fields or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md.
+     Translation of docs/legal/site/delete/index.html at 22dc38f. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">草案——待法律审查。本页不构成法律意见。</p>
+<h1>删除您的数据</h1>
+<p class="meta">Zonu AI · 草案 2 · 2026-10-28</p>
+
+<h2>如果您仍在使用应用</h2>
+<p>打开“设置 → 删除账号和数据”。这是最快的方式：应用会立即停止使用您的旧身份、清除其本地副本，并且您的聊天内容、记忆和使用量计数（被举报的消息除外，见下文）会在 24 小时内从我们的在线数据库中移除。下方的网页表单面向已不再拥有该应用的用户。</p>
+
+<h2>删除什么，以及何时删除</h2>
+<p>当您在应用中删除时，您的数据会在 24 小时内离开我们的在线数据库，我们的加密备份在 28 天后过期，因此总计在 30 天内完成删除。对于在本页提出的请求，我们会在收到有效请求后 30 天内处理，此后适用相同的在线数据库和备份时限。上述两种情形的例外：</p>
+<ol type="a">
+  <li><strong>处于未结举报下的内容：</strong>被举报的消息及其所回答的问题自举报之日起保存 30 天，如果我们正在调查则保存 90 天，因此最长为 90 天加备份中的 28 天。您自己的举报备注文本会随您的账户一并删除。</li>
+  <li><strong>不含内容的设备记录和同步日志：</strong>保存 30 天，之后在备份中最多再保存 28 天。它们不含消息或记忆；同步日志仅含记录标识符。</li>
+  <li><strong>来自本页的删除请求：</strong>请求记录最迟在您发送后 60 天删除，另加备份中最多 28 天。</li>
+  <li><strong>Google：</strong>模型提供商将提示词和回复的滥用监测日志保存 55 天，位于我们的数据库之外。我们的删除无法触及这些日志。</li>
+</ol>
+<p>完整情况请参见<a href="../privacy/">隐私政策</a>。</p>
+
+<h2>Google 登录与订阅</h2>
+<p>如果您关联了 Google 账户（可选登录，Android），在应用中从任何设备删除账户，都会删除您的数据、与 Google 账户的关联，以及合并到该账户的每台设备的数据。之后用同一个 Google 账户登录会创建一个新账户。将第二台设备加入某个账户时，该设备自己的匿名聊天记录会在警告后被删除，不会迁移。</p>
+<p><strong>删除账户不会取消 Google Play 订阅。</strong>请在 Google Play 的 <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a> 取消。账户删除后，我们的订阅服务 RevenueCat 可能保留其自己的购买记录；它是否以及如何删除尚未确认。请参阅<a href="../privacy/">隐私政策</a>。</p>
+
+<h2>通过网页请求删除</h2>
+<p>我们不知道您的姓名或电子邮件地址（Google 登录只保存账户标识符），因此只有当您的请求恰好指向一位用户时，我们才能删除数据。如果您使用 Google 登录且已不再拥有该应用，请在下方请求中发送您之前记下的设备 ID，或重新安装应用、使用 Google 登录并在“设置 → 设备 ID”中查看设备 ID（或在应用内删除）；我们会人工处理每项请求。</p>
+<ul>
+  <li>仅当您输入的<strong>设备 ID</strong>（在应用中的“设置 → 设备 ID”）与一台仍然存在（未被删除）的设备匹配时，请求才会删除数据。不接受以其他信息代替。</li>
+  <li>仅凭电子邮件地址无法识别用户；它只用于回复您。</li>
+  <li>如果我们无法验证请求，则不会删除任何内容，并且每个此类请求都会收到同一条中性答复：“我们未能验证此请求。请在应用中删除您的数据（设置 → 删除账号和数据）。名下所有设备已连续 12 个月未连接我们服务器的用户，其数据会被自动删除。”该答复不会说明是否存在这样的用户。</li>
+  <li>开发者会在 30 天内处理每项请求。请求记录仅包含电子邮件地址和设备 ID；在请求办结后 30 天删除，且无论如何最迟在您发送后 60 天删除。</li>
+  <li>每次有人使用“清除本地数据”，应用都会生成新的设备身份，因此一个人可能拥有不止一个身份；请为您所知的每个设备 ID 各发送一份请求。</li>
+</ul>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/account-delete-request/app.ts (email and device_id required,
+     honeypot website always sent as ''). The form has no action and stays hidden until the inline script runs, so without
+     script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value. -->
+<form id="request-form" aria-label="删除请求表单" hidden>
+  <p><label for="email">电子邮件地址（必填）</label>
+  <input id="email" name="email" type="text" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="email-hint">
+  <span class="hint" id="email-hint">我们向此地址确认处理结果，不作他用。它无法单独识别您的身份。</span></p>
+  <p><label for="device_id">设备 ID（必填）</label>
+  <input id="device_id" name="device_id" type="text" autocomplete="off" spellcheck="false" required aria-describedby="device_id-hint">
+  <span class="hint" id="device_id-hint">在应用中：设置 → 设备 ID。形如 123e4567-e89b-12d3-a456-426614174000 的代码。</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>提交请求</button>
+  <p id="request-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"我们已收到您的请求；我们将在 30 天内处理。","invalid":"请检查各字段。","later":"请稍后再试，或写信至 purplepixxelstudios@gmail.com。","failed":"无法发送。请写信至 purplepixxelstudios@gmail.com。"};
+  var form = document.getElementById('request-form');
+  var status = document.getElementById('request-status');
+  var button = form.querySelector('button');
+  var CONTROL = /[\u0000-\u001F\u007F-\u009F]/;
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  // As account-delete-request parseEmail: no control character, trimmed, 3..254 code points,
+  // no whitespace inside, exactly one '@' with text either side. Null when invalid.
+  function email(value) {
+    if (CONTROL.test(value)) return null;
+    var v = value.trim();
+    var n = Array.from(v).length;
+    var parts = v.split('@');
+    if (n < 3 || n > 254 || /\s/.test(v) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
+    return v;
+  }
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/account-delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = { email: email(f.email.value), device_id: f.device_id.value.trim(), website: f.website.value };
+    if (body.email === null) { status.textContent = MSG.invalid; f.email.focus(); return; }
+    if (!UUID.test(body.device_id)) { status.textContent = MSG.invalid; f.device_id.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>您也可以写信至 <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a>，主题写“Delete my data”，并附上相同的信息。</p>
+
+<nav aria-label="页面"><a href="../privacy/">隐私政策</a> · <a href="../terms/">使用条款</a> · <a href="../report/">举报内容</a> · <a href="../contact/">权利人联系方式</a> · <a href="../crisis/">危机应对规程</a></nav>
+</body>
+</html>

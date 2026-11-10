@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your data — Zonu AI (draft)</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the deletion timeline, its exceptions, the request fields or the endpoint.
+     Report hold: the reported reply and the question it answers (messages.reply_to) share one hold: supabase/migrations/20261009182000_message_reply_to.sql:47-51, 200-227; hold 30 d / 90 d: 20261004190000_reports.sql:97, 133-134.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">Draft — pending legal review. This page is not legal advice.</p>
+<h1>Delete your data</h1>
+<p class="meta">Zonu AI · draft 2 · 2026-10-28</p>
+
+<h2>If you still use the app</h2>
+<p>Open Settings → Delete account and data. This is the fastest way: the app stops working with your old identity at once, wipes its local copy, and your chats, memory and usage counts are removed (a reported message is the exception below) from our live database within 24 hours. The web form below is for people who no longer have the app.</p>
+
+<h2>What is deleted, and when</h2>
+<p>When you delete in the app, your data leaves our live database within 24 hours and our encrypted backups age out after 28 days, so deletion is complete within 30 days in total. For a request made on this page, we act within 30 days of a valid request, and after that the same live-database and backup bounds apply. The exceptions to both:</p>
+<ol type="a">
+  <li><strong>Content under an open report:</strong> a reported message, and the question it answers, is kept 30 days from the report, or 90 days if we are investigating it, so up to 90 days plus 28 days of backups. The text of your own report note is deleted with your account.</li>
+  <li><strong>A content-free device record and sync log:</strong> kept 30 days, then up to 28 more days in backups. They hold no messages or memory; the sync log holds record identifiers only.</li>
+  <li><strong>A deletion request from this page:</strong> the request record is deleted at most 60 days after you send it, plus up to 28 days in backups.</li>
+  <li><strong>Google:</strong> the model provider keeps abuse-monitoring logs of prompts and responses for 55 days, outside our database. Our deletion does not reach them.</li>
+</ol>
+<p>See the <a href="../privacy/">privacy policy</a> for the full picture.</p>
+
+<h2>Signing in with Google, and subscriptions</h2>
+<p>If you linked a Google account (optional sign-in, Android), deleting your account in the app, from any device, deletes your data, the link to your Google account and the data of every device merged into the account. Signing in later with the same Google account starts a new account. Joining a second device to an account deletes that device's own anonymous chats after a warning; they are not moved.</p>
+<p><strong>Deleting your account does not cancel a Google Play subscription.</strong> Cancel it in Google Play at <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>. Our subscription service, RevenueCat, may keep its own record of the purchase after your account is deleted; whether and how it deletes it is not yet confirmed. See the <a href="../privacy/">privacy policy</a>.</p>
+
+<h2>Ask for deletion on the web</h2>
+<p>We know no name or e-mail address of yours (a Google sign-in stores only the account identifier), so we can only delete data when your request points to exactly one user. If you signed in with Google and no longer have the app, send a Device ID you noted earlier in the request below, or reinstall the app, sign in with Google and read a Device ID under Settings → Device ID (or delete in the app); we handle each request by hand.</p>
+<ul>
+  <li>A request deletes data only when the <strong>Device ID</strong> you enter (in the app under Settings → Device ID) matches a device that still exists (is not deleted). Nothing else is accepted in its place.</li>
+  <li>An e-mail address alone cannot identify a user; it is used only to reply to you.</li>
+  <li>If we cannot verify a request, nothing is deleted and every such request gets the same neutral reply: “We could not verify this request. Please delete your data from the app (Settings → Delete account and data). Data of a user none of whose devices has connected to our server for 12 months is deleted automatically.” The reply does not say whether such a user exists.</li>
+  <li>The developer handles each request within 30 days. The request record holds only the e-mail address and the Device ID; it is deleted 30 days after the request is closed and in any case 60 days after you send it.</li>
+  <li>Each time someone used "Clear local data" the app made a new device identity, so a person may have more than one; send one request per Device ID you know.</li>
+</ul>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/account-delete-request/app.ts (email and device_id required,
+     honeypot website always sent as ''). The form has no action and stays hidden until the inline script runs, so without
+     script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value. -->
+<form id="request-form" aria-label="Deletion request form" hidden>
+  <p><label for="email">E-mail address (required)</label>
+  <input id="email" name="email" type="text" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="email-hint">
+  <span class="hint" id="email-hint">Where we confirm the outcome. It is used for nothing else. It cannot identify you on its own.</span></p>
+  <p><label for="device_id">Device ID (required)</label>
+  <input id="device_id" name="device_id" type="text" autocomplete="off" spellcheck="false" required aria-describedby="device_id-hint">
+  <span class="hint" id="device_id-hint">In the app: Settings → Device ID. A code like 123e4567-e89b-12d3-a456-426614174000.</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>Send request</button>
+  <p id="request-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"We received your request; we handle it within 30 days.","invalid":"Check the fields.","later":"Try again later, or write to purplepixxelstudios@gmail.com.","failed":"Could not send. Write to purplepixxelstudios@gmail.com."};
+  var form = document.getElementById('request-form');
+  var status = document.getElementById('request-status');
+  var button = form.querySelector('button');
+  var CONTROL = /[\u0000-\u001F\u007F-\u009F]/;
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  // As account-delete-request parseEmail: no control character, trimmed, 3..254 code points,
+  // no whitespace inside, exactly one '@' with text either side. Null when invalid.
+  function email(value) {
+    if (CONTROL.test(value)) return null;
+    var v = value.trim();
+    var n = Array.from(v).length;
+    var parts = v.split('@');
+    if (n < 3 || n > 254 || /\s/.test(v) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
+    return v;
+  }
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/account-delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = { email: email(f.email.value), device_id: f.device_id.value.trim(), website: f.website.value };
+    if (body.email === null) { status.textContent = MSG.invalid; f.email.focus(); return; }
+    if (!UUID.test(body.device_id)) { status.textContent = MSG.invalid; f.device_id.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>You can also write to <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> with the subject "Delete my data" and the same details.</p>
+
+<nav aria-label="Pages"><a href="../privacy/">Privacy policy</a> · <a href="../terms/">Terms</a> · <a href="../report/">Report content</a> · <a href="../contact/">Rights-holder contact</a> · <a href="../crisis/">Crisis protocol</a></nav>
+</body>
+</html>

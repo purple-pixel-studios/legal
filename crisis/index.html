@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we respond when someone may be at risk of self-harm — Zonu AI (draft)</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice. Text = Part A of
+     docs/legal/sb243-crisis-protocol.md (draft 1.2), app name filled in. Owner: the founder (PROD-5).
+     Update trigger: a change to the moderation `crisis` label or policy, the crisis card, crisis-lines.ts, the guardrail crisis rule,
+     the AI disclosure, or a counsel answer.
+     Note: the "What we keep" paragraph deliberately diverges from Part A of docs/legal/sb243-crisis-protocol.md (counts are kept internally; any published figure counts only); the protocol owner (PROD-5) ports the wording back.
+     No scripts, no cookies, no external fonts (GC-3). -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">Draft — pending legal review. This page is not legal advice.</p>
+<h1>How we respond when someone may be at risk of self-harm</h1>
+<p class="meta">Zonu AI · draft 1 · last updated 2026-10-04</p>
+
+<p>Zonu AI lets you talk with AI portrayals of historical figures. The characters are artificial intelligence, not real people, and every chat says so.</p>
+
+<p><strong>Detection.</strong> Every message you send is checked by an automated safety classifier before the character answers. The classifier looks for expressions of suicidal thoughts, suicide or self-harm. It is designed for all six app languages and has been tested in English, Turkish and Arabic.</p>
+
+<p><strong>What you see.</strong> If the classifier detects that you may be at risk, the app shows a support card with a crisis line for your region, for example 988 (Suicide &amp; Crisis Lifeline) in the United States, or tells you to call your local emergency number. The character is instructed to step out of its role for that reply, to speak plainly in your language, to give you the crisis line and to ask whether you are safe, and to stay out of character until you are safe.</p>
+
+<p><strong>What the characters will not do.</strong> A message that asks for methods or means of self-harm is not sent to the character; you still see the support card. A separate check reviews each reply as it is written; a reply that encourages self-harm is withdrawn and not saved, but part of it may appear on screen first.</p>
+
+<p><strong>What we keep.</strong> We do not block your message because it expresses thoughts of self-harm. We mark the message as one that triggered a support card, so that we can count how often this happens. We count these internally; any figure we publish will be counts only, never your messages or anything that identifies you.</p>
+
+<p><strong>Limits.</strong> Automated detection can miss things or get them wrong. Zonu AI is not a crisis service or a substitute for professional help. If you are in danger, contact your local emergency number now.</p>
+
+<p>Last updated: 2026-10-04. See also the <a href="../privacy/">privacy policy</a>.</p>
+
+<nav aria-label="Pages"><a href="../privacy/">Privacy policy</a> · <a href="../terms/">Terms</a> · <a href="../delete/">Delete your data</a> · <a href="../report/">Report content</a> · <a href="../contact/">Rights-holder contact</a></nav>
+</body>
+</html>

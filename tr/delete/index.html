@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verilerinizi silin — Zonu AI (taslak)</title>
+<!-- Translation of docs/legal/site/delete/index.html at 22dc38f.
+     DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the deletion timeline, its exceptions, the request fields or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">Taslak — hukuki incelemeyi bekliyor. Bu sayfa hukuki tavsiye değildir.</p>
+<h1>Verilerinizi silin</h1>
+<p class="meta">Zonu AI · taslak 2 · 2026-10-28</p>
+
+<h2>Uygulamayı hâlâ kullanıyorsanız</h2>
+<p>Ayarlar → Hesabı ve verileri sil'i açın. Bu en hızlı yoldur: uygulama eski kimliğinizle çalışmayı hemen bırakır, yerel kopyasını siler ve sohbetleriniz, hafızanız ve kullanım sayılarınız (bildirilmiş bir mesaj, aşağıdaki istisnadır) 24 saat içinde canlı veritabanımızdan kaldırılır. Aşağıdaki web formu, artık uygulaması olmayanlar içindir.</p>
+
+<h2>Ne silinir ve ne zaman</h2>
+<p>Uygulamada sildiğinizde verileriniz 24 saat içinde canlı veritabanımızdan çıkar ve şifreli yedeklerimiz 28 gün sonra süresi dolarak silinir; dolayısıyla silme toplamda 30 gün içinde tamamlanır. Bu sayfadan yapılan bir talepte, geçerli bir talepten itibaren 30 gün içinde işlem yaparız; ardından aynı canlı veritabanı ve yedek süreleri uygulanır. Her ikisine de istisnalar:</p>
+<ol type="a">
+  <li><strong>Açık bir bildirime konu içerik:</strong> bildirilen bir mesaj ve yanıtladığı soru bildirimden itibaren 30 gün, incelediğimiz durumda ise 90 gün saklanır; yani en fazla 90 gün artı yedeklerde 28 gün. Kendi bildirim notunuzun metni, hesabınızla birlikte silinir.</li>
+  <li><strong>İçeriksiz bir cihaz kaydı ve eşitleme günlüğü:</strong> 30 gün saklanır, ardından yedeklerde en fazla 28 gün daha kalır. Mesaj veya hafıza içermezler; eşitleme günlüğü yalnızca kayıt tanımlayıcılarını içerir.</li>
+  <li><strong>Bu sayfadan yapılan bir silme talebi:</strong> talep kaydı, gönderdiğinizden en geç 60 gün sonra silinir; ayrıca yedeklerde en fazla 28 gün kalır.</li>
+  <li><strong>Google:</strong> model sağlayıcısı, istemlerin ve yanıtların kötüye kullanım izleme günlüklerini veritabanımızın dışında 55 gün saklar. Bizim silmemiz bunlara ulaşmaz.</li>
+</ol>
+<p>Tüm ayrıntılar için <a href="../privacy/">gizlilik politikasına</a> bakın.</p>
+
+<h2>Google ile giriş ve abonelikler</h2>
+<p>Bir Google hesabı bağladıysanız (isteğe bağlı giriş, Android), hesabınızı uygulamada herhangi bir cihazdan silmek verilerinizi, Google hesabınıza olan bağlantıyı ve hesaba birleştirilmiş her cihazın verilerini siler. Aynı Google hesabıyla sonradan giriş yapmak yeni bir hesap başlatır. İkinci bir cihazı bir hesaba katmak, o cihazın kendi anonim sohbetlerini bir uyarıdan sonra siler; taşınmazlar.</p>
+<p><strong>Hesabınızı silmek bir Google Play aboneliğini iptal etmez.</strong> Aboneliği Google Play'de <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a> adresinden iptal edin. Abonelik hizmetimiz RevenueCat, hesabınız silindikten sonra satın almaya ilişkin kendi kaydını tutabilir; bunu silip silmediği ve nasıl sildiği henüz teyit edilmedi. <a href="../privacy/">Gizlilik politikasına</a> bakın.</p>
+
+<h2>Web üzerinden silme talep edin</h2>
+<p>Adınızı veya e-posta adresinizi bilmiyoruz (Google ile giriş yalnızca hesap tanımlayıcısını saklar); bu nedenle verileri yalnızca talebiniz tam olarak tek bir kullanıcıyı gösterdiğinde silebiliriz. Google ile giriş yaptıysanız ve artık uygulamanız yoksa, daha önce not ettiğiniz bir Cihaz kimliğini aşağıdaki talepte gönderin ya da uygulamayı yeniden yükleyip Google ile giriş yapın ve Cihaz kimliğini Ayarlar → Cihaz kimliği altından okuyun (veya uygulamada silin); her talebi elle işleriz.</p>
+<ul>
+  <li>Bir talep, yalnızca girdiğiniz <strong>Cihaz kimliği</strong> (uygulamada Ayarlar → Cihaz kimliği altında) hâlâ var olan (silinmemiş) bir cihazla eşleştiğinde veri siler. Bunun yerine başka hiçbir bilgi kabul edilmez.</li>
+  <li>Bir e-posta adresi tek başına bir kullanıcıyı belirleyemez; yalnızca size yanıt vermek için kullanılır.</li>
+  <li>Bir talebi doğrulayamazsak hiçbir şey silinmez ve bu tür her talebe aynı tarafsız yanıtı veririz: "Bu talebi doğrulayamadık. Lütfen verilerinizi uygulamadan silin (Ayarlar → Hesabı ve verileri sil). Hiçbir cihazı 12 aydır sunucumuza bağlanmamış bir kullanıcının verileri otomatik olarak silinir." Yanıt, böyle bir kullanıcının olup olmadığını belirtmez.</li>
+  <li>Geliştirici her talebi 30 gün içinde işleme alır. Talep kaydı yalnızca e-posta adresini ve Cihaz kimliğini içerir; talep kapatıldıktan 30 gün sonra, her durumda gönderdiğinizden en geç 60 gün sonra silinir.</li>
+  <li>Biri "Yerel verileri sil" seçeneğini her kullandığında uygulama yeni bir cihaz kimliği oluşturdu; bu nedenle bir kişinin birden fazla kimliği olabilir; bildiğiniz her Cihaz kimliği için bir talep gönderin.</li>
+</ul>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/account-delete-request/app.ts (email and device_id required,
+     honeypot website always sent as ''). The form has no action and stays hidden until the inline script runs, so without
+     script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value. -->
+<form id="request-form" aria-label="Silme talebi formu" hidden>
+  <p><label for="email">E-posta adresi (zorunlu)</label>
+  <input id="email" name="email" type="text" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="email-hint">
+  <span class="hint" id="email-hint">Sonucu bildireceğimiz adres. Başka hiçbir şey için kullanılmaz. Tek başına sizi belirleyemez.</span></p>
+  <p><label for="device_id">Cihaz kimliği (zorunlu)</label>
+  <input id="device_id" name="device_id" type="text" autocomplete="off" spellcheck="false" required aria-describedby="device_id-hint">
+  <span class="hint" id="device_id-hint">Uygulamada: Ayarlar → Cihaz kimliği. 123e4567-e89b-12d3-a456-426614174000 gibi bir kod.</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>Talebi gönder</button>
+  <p id="request-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"Talebinizi aldık; 30 gün içinde işleme alırız.","invalid":"Alanları kontrol edin.","later":"Daha sonra tekrar deneyin veya purplepixxelstudios@gmail.com adresine yazın.","failed":"Gönderilemedi. purplepixxelstudios@gmail.com adresine yazın."};
+  var form = document.getElementById('request-form');
+  var status = document.getElementById('request-status');
+  var button = form.querySelector('button');
+  var CONTROL = /[\u0000-\u001F\u007F-\u009F]/;
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  // As account-delete-request parseEmail: no control character, trimmed, 3..254 code points,
+  // no whitespace inside, exactly one '@' with text either side. Null when invalid.
+  function email(value) {
+    if (CONTROL.test(value)) return null;
+    var v = value.trim();
+    var n = Array.from(v).length;
+    var parts = v.split('@');
+    if (n < 3 || n > 254 || /\s/.test(v) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
+    return v;
+  }
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/account-delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = { email: email(f.email.value), device_id: f.device_id.value.trim(), website: f.website.value };
+    if (body.email === null) { status.textContent = MSG.invalid; f.email.focus(); return; }
+    if (!UUID.test(body.device_id)) { status.textContent = MSG.invalid; f.device_id.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>Ayrıca konusu "Delete my data" (Verilerimi silin) olan ve aynı bilgileri içeren bir e-postayı <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> adresine yazabilirsiniz.</p>
+
+<nav aria-label="Sayfalar"><a href="../privacy/">Gizlilik politikası</a> · <a href="../terms/">Kullanım koşulları</a> · <a href="../report/">İçerik bildirin</a> · <a href="../contact/">Hak sahibi iletişimi</a> · <a href="../crisis/">Kriz protokolü</a></nav>
+</body>
+</html>

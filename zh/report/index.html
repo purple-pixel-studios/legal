@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>举报内容 — Zonu AI(草案)</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the report categories, the review targets, the hold periods or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md.
+     Translation of docs/legal/site/report/index.html at 22dc38f. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">草案——待法律审查。本页不构成法律意见。</p>
+<h1>举报内容</h1>
+<p class="meta">Zonu AI · 草案 1 · 2026-10-04</p>
+
+<p>请使用此表单告知我们角色回复中不准确、具有冒犯性、涉及色情、涉及自我伤害或冒充真实人物的内容，或您认为我们应当查看的任何其他内容。如果您在使用应用，也可以在应用中举报单条回复，方法是通过该回复的操作栏或长按该回复。权利人和主管机关请使用<a href="../contact/">联系页面</a>。</p>
+
+<h2>举报会如何处理</h2>
+<ul>
+  <li>举报会发送给开发者，由开发者阅读。我们的目标是在 24 小时内查看涉及自我伤害、色情内容、冒充和冒犯性内容的举报，并在 72 小时内查看涉及不准确及其他主题的举报。这些是目标而非保证，并且本服务由一个人运营。</li>
+  <li>每日摘要以及某个角色收到大量举报时的警报，会通过电子邮件发送给开发者。摘要仅包含计数、角色 ID、类别和举报 ID，绝不含您的备注。</li>
+  <li>举报用于改进角色和安全过滤器。<strong>我们不承诺因某项举报而移除某条回复，或更改或下线某个角色。</strong>举报绝不会自动暂停某个角色。</li>
+  <li>是否以及如何答复举报人：[需创始人在发布前确认]。</li>
+  <li>举报及其可选填的备注和联系方式保存 30 天，如果我们正在调查则保存 90 天，然后删除。即使您删除账户，您从应用中举报的回复及其所回答的问题也会在同一期限内保留；您的备注会随账户一并删除。</li>
+</ul>
+<p>请勿在备注中填写您希望保密的消息文本或关于他人的详细信息。如果您处于危险之中，请拨打您当地的紧急电话；本表单并非全天候受到监控。</p>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/public-report/app.ts (persona_id and category required, note
+     and contact optional, honeypot website always sent as ''). The form has no action and stays hidden until the inline script
+     runs, so without script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value.
+     The character list is the enabled personas (packages/personas/*/card.en.json availability.enabled), checked by forms.test.ts. -->
+<form id="report-form" aria-label="举报表单" hidden>
+  <p><label for="persona_id">角色（必填）</label>
+  <select id="persona_id" name="persona_id" required>
+    <option value="">请选择该回复所属的角色。</option>
+    <option value="franklin">本杰明·富兰克林</option>
+    <option value="sor-juana">胡安娜·伊内斯·德·拉·克鲁斯修女</option>
+    <option value="cleopatra">克利奥帕特拉</option>
+    <option value="confucius">孔子</option>
+    <option value="leonardo">列奥纳多·达·芬奇</option>
+    <option value="curie">玛丽·居里</option>
+    <option value="socrates">苏格拉底</option>
+    <option value="shakespeare">威廉·莎士比亚</option>
+    <option value="ibn-sina">伊本·西那（阿维森纳）</option>
+    <option value="murasaki">紫式部</option>
+  </select></p>
+  <p><label for="category">问题是什么？（必填）</label>
+  <select id="category" name="category" required>
+    <option value="">—</option>
+    <option value="inaccurate">不准确</option>
+    <option value="offensive">冒犯性</option>
+    <option value="sexual">色情</option>
+    <option value="self_harm">自我伤害</option>
+    <option value="impersonation">冒充</option>
+    <option value="other">其他</option>
+  </select></p>
+  <p><label for="note">备注（选填）</label>
+  <textarea id="note" name="note" rows="4" maxlength="300" aria-describedby="note-hint"></textarea>
+  <span class="hint" id="note-hint">该回复说了什么，以及为什么有问题。约 300 个字符；可以换行。</span></p>
+  <p><label for="contact">联系方式（选填）</label>
+  <input id="contact" name="contact" type="text" inputmode="email" autocomplete="email" maxlength="254" aria-describedby="contact-hint">
+  <span class="hint" id="contact-hint">如果您希望我们能够联系到您，请填写电子邮件地址；最多 254 个字符。</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>提交举报</button>
+  <p id="report-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"谢谢，我们已收到您的举报。","invalid":"请检查各字段。","later":"请稍后再试，或写信至 purplepixxelstudios@gmail.com。","failed":"无法发送。请写信至 purplepixxelstudios@gmail.com。"};
+  var form = document.getElementById('report-form');
+  var status = document.getElementById('report-status');
+  var button = form.querySelector('button');
+  // As public-report: every C0/C1 control character except a line break is refused in the note.
+  var CONTROL = /[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/;
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/public-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = {
+      persona_id: f.persona_id.value,
+      category: f.category.value,
+      note: f.note.value.replace(/\r\n?/g, '\n'),
+      contact: f.contact.value,
+      website: f.website.value
+    };
+    if (!body.persona_id) { status.textContent = MSG.invalid; f.persona_id.focus(); return; }
+    if (!body.category) { status.textContent = MSG.invalid; f.category.focus(); return; }
+    if (Array.from(body.note).length > 300 || CONTROL.test(body.note)) { status.textContent = MSG.invalid; f.note.focus(); return; }
+    if (Array.from(body.contact).length > 254) { status.textContent = MSG.invalid; f.contact.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>您也可以写信至 <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a>，主题写“Report content”。</p>
+
+<nav aria-label="页面"><a href="../privacy/">隐私政策</a> · <a href="../terms/">使用条款</a> · <a href="../delete/">删除您的数据</a> · <a href="../contact/">权利人联系方式</a> · <a href="../crisis/">危机应对规程</a></nav>
+</body>
+</html>

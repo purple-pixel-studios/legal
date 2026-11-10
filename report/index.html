@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report content — Zonu AI (draft)</title>
+<!-- DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the report categories, the review targets, the hold periods or the endpoint.
+     Report hold: the reported reply and the question it answers (messages.reply_to) share one hold: supabase/migrations/20261009182000_message_reply_to.sql:47-51, 200-227; hold 30 d / 90 d: 20261004190000_reports.sql:97, 133-134.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+</style>
+</head>
+<body>
+<p class="draft">Draft — pending legal review. This page is not legal advice.</p>
+<h1>Report content</h1>
+<p class="meta">Zonu AI · draft 1 · 2026-10-04</p>
+
+<p>Use this form to tell us about a character's replies that are inaccurate, offensive, sexual, about self-harm, or that impersonate a real person, or about anything else you think we should look at. If you use the app, you can also report a single reply there, from the reply's action row or by long-pressing it. Rights-holders and authorities should use the <a href="../contact/">contact page</a>.</p>
+
+<h2>What happens to a report</h2>
+<ul>
+  <li>A report goes to the developer, who reads it. We aim to look at reports about self-harm, sexual content, impersonation and offensive content within 24 hours, and reports about inaccuracy and other topics within 72 hours. These are targets, not guarantees, and the service is run by one person.</li>
+  <li>A daily summary and alerts when a character collects many reports go to the developer by e-mail. The summary holds counts, character ids, categories and report ids only, never your note.</li>
+  <li>Reports are used to improve the characters and the safety filters. <strong>We do not promise that a reply is removed, or that a character is changed or taken down, because of a report.</strong> A report never suspends a character automatically.</li>
+  <li>Whether and how we answer a reporter: [founder to confirm before publication].</li>
+  <li>A report, with its optional note and contact, is kept 30 days, or 90 days if we are investigating it, and then deleted. A reply you reported from the app, and the question it answers, is kept for the same period even if you delete your account; your note is deleted with the account.</li>
+</ul>
+<p>Do not put message text you want kept private, or details about other people, in the note. If you are in danger, contact your local emergency number; this form is not monitored round the clock.</p>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/public-report/app.ts (persona_id and category required, note
+     and contact optional, honeypot website always sent as ''). The form has no action and stays hidden until the inline script
+     runs, so without script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value.
+     The character list is the enabled personas (packages/personas/*/card.en.json availability.enabled), checked by forms.test.ts. -->
+<form id="report-form" aria-label="Report form" hidden>
+  <p><label for="persona_id">Character (required)</label>
+  <select id="persona_id" name="persona_id" required>
+    <option value="">Choose the character the reply came from.</option>
+    <option value="franklin">Benjamin Franklin</option>
+    <option value="cleopatra">Cleopatra</option>
+    <option value="confucius">Confucius</option>
+    <option value="ibn-sina">Ibn Sina (Avicenna)</option>
+    <option value="leonardo">Leonardo da Vinci</option>
+    <option value="curie">Marie Curie</option>
+    <option value="murasaki">Murasaki Shikibu</option>
+    <option value="socrates">Socrates</option>
+    <option value="sor-juana">Sor Juana Inés de la Cruz</option>
+    <option value="shakespeare">William Shakespeare</option>
+  </select></p>
+  <p><label for="category">What is the problem? (required)</label>
+  <select id="category" name="category" required>
+    <option value="">—</option>
+    <option value="inaccurate">Inaccurate</option>
+    <option value="offensive">Offensive</option>
+    <option value="sexual">Sexual</option>
+    <option value="self_harm">Self-harm</option>
+    <option value="impersonation">Impersonation</option>
+    <option value="other">Other</option>
+  </select></p>
+  <p><label for="note">Note (optional)</label>
+  <textarea id="note" name="note" rows="4" maxlength="300" aria-describedby="note-hint"></textarea>
+  <span class="hint" id="note-hint">What the reply said and why it is a problem. About 300 characters; line breaks are fine.</span></p>
+  <p><label for="contact">Contact (optional)</label>
+  <input id="contact" name="contact" type="text" inputmode="email" autocomplete="email" maxlength="254" aria-describedby="contact-hint">
+  <span class="hint" id="contact-hint">An e-mail address if you want us to be able to reach you; up to 254 characters.</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>Send report</button>
+  <p id="report-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"Thank you, we received your report.","invalid":"Check the fields.","later":"Try again later, or write to purplepixxelstudios@gmail.com.","failed":"Could not send. Write to purplepixxelstudios@gmail.com."};
+  var form = document.getElementById('report-form');
+  var status = document.getElementById('report-status');
+  var button = form.querySelector('button');
+  // As public-report: every C0/C1 control character except a line break is refused in the note.
+  var CONTROL = /[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/;
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/public-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = {
+      persona_id: f.persona_id.value,
+      category: f.category.value,
+      note: f.note.value.replace(/\r\n?/g, '\n'),
+      contact: f.contact.value,
+      website: f.website.value
+    };
+    if (!body.persona_id) { status.textContent = MSG.invalid; f.persona_id.focus(); return; }
+    if (!body.category) { status.textContent = MSG.invalid; f.category.focus(); return; }
+    if (Array.from(body.note).length > 300 || CONTROL.test(body.note)) { status.textContent = MSG.invalid; f.note.focus(); return; }
+    if (Array.from(body.contact).length > 254) { status.textContent = MSG.invalid; f.contact.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>You can also write to <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> with the subject "Report content".</p>
+
+<nav aria-label="Pages"><a href="../privacy/">Privacy policy</a> · <a href="../terms/">Terms</a> · <a href="../delete/">Delete your data</a> · <a href="../contact/">Rights-holder contact</a> · <a href="../crisis/">Crisis protocol</a></nav>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>احذف بياناتك — Zonu AI (مسودة)</title>
+<!-- Translation of docs/legal/site/delete/index.html at 22dc38f (Arabic, MSA; English is the source text).
+     DRAFT 1 (2026-10-04) — not reviewed by counsel; nothing here is legal advice (GC-1, ADR-63).
+     Owner: the founder. Update trigger: a change to the deletion timeline, its exceptions, the request fields or the endpoint.
+     No cookies, no external fonts, no third-party scripts (GC-3); the form's own inline script is Task 2's. Citations: task-1-report.md. -->
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .meta { opacity: 0.75; margin-top: 0; }
+  .draft { border: 2px solid currentColor; padding: 0.5rem 0.75rem; font-weight: 600; }
+  label { display: block; font-weight: 600; margin-top: 0.75rem; }
+  input, select, textarea, button { font: inherit; }
+  input, select, textarea { display: block; width: 100%; box-sizing: border-box; }
+  button { margin-top: 1rem; }
+  .hint { display: block; opacity: 0.85; }
+  .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  nav { margin-top: 2rem; }
+  code, a[href^="mailto:"] { direction: ltr; unicode-bidi: isolate; }
+</style>
+</head>
+<body>
+<p class="draft">مسودة — بانتظار المراجعة القانونية. هذه الصفحة ليست استشارة قانونية.</p>
+<h1>احذف بياناتك</h1>
+<p class="meta">Zonu AI · المسودة 2 · 2026-10-28</p>
+
+<h2>إذا كنت لا تزال تستخدم التطبيق</h2>
+<p>افتح الإعدادات ← حذف الحساب والبيانات. هذه أسرع طريقة: يتوقف التطبيق فورًا عن العمل بهويتك القديمة، ويمسح نسخته المحلية، وتُزال محادثاتك وذاكرتك وأعداد استخدامك (باستثناء الرسالة المُبلَّغ عنها، كما يرد أدناه) من قاعدة بياناتنا الحية خلال 24 ساعة. أما نموذج الويب أدناه فهو لمن لم يعد التطبيق لديهم.</p>
+
+<h2>ما الذي يُحذف، ومتى</h2>
+<p>عندما تحذف من التطبيق، تغادر بياناتك قاعدة بياناتنا الحية خلال 24 ساعة، وتنتهي صلاحية نسخنا الاحتياطية المشفّرة بعد 28 يومًا، فيكتمل الحذف خلال 30 يومًا إجمالًا. أما الطلب المقدَّم عبر هذه الصفحة فنتصرف بشأنه خلال 30 يومًا من تقديم طلب صالح، وبعد ذلك تسري الحدود نفسها لقاعدة البيانات الحية والنسخ الاحتياطية. والاستثناءات في الحالتين:</p>
+<ol type="a">
+  <li><strong>المحتوى المشمول ببلاغ مفتوح:</strong> تُحفظ الرسالة المُبلَّغ عنها والسؤال الذي ردّت عليه 30 يومًا من تاريخ البلاغ، أو 90 يومًا إذا كنا نحقق فيهما، أي حتى 90 يومًا زائد 28 يومًا من النسخ الاحتياطية. ويُحذف نص ملاحظتك على البلاغ مع حذف حسابك.</li>
+  <li><strong>سجل جهاز خالٍ من المحتوى وسجل المزامنة الخاص به:</strong> يُحفظان 30 يومًا، ثم حتى 28 يومًا إضافية في النسخ الاحتياطية. ولا يحتويان على رسائل أو ذاكرة؛ ويضم سجل المزامنة معرّفات السجلات فقط.</li>
+  <li><strong>طلب حذف من هذه الصفحة:</strong> يُحذف سجل الطلب بعد 60 يومًا على الأكثر من إرساله، زائد حتى 28 يومًا في النسخ الاحتياطية.</li>
+  <li><strong>Google:</strong> يحتفظ مزوّد النموذج بسجلات مراقبة إساءة الاستخدام للمدخلات والردود لمدة 55 يومًا، خارج قاعدة بياناتنا. ولا يصل حذفنا إليها.</li>
+</ol>
+<p>راجع <a href="../privacy/">سياسة الخصوصية</a> للصورة الكاملة.</p>
+
+<h2>تسجيل الدخول عبر Google والاشتراكات</h2>
+<p>إذا ربطت حساب Google (تسجيل دخول اختياري، Android)، فإن حذف حسابك في التطبيق من أي جهاز يحذف بياناتك والرابط بحساب Google وبيانات كل جهاز دُمج في الحساب. ويبدأ تسجيل الدخول لاحقًا بحساب Google نفسه حسابًا جديدًا. وضمّ جهاز ثانٍ إلى حساب يحذف محادثات ذلك الجهاز المجهولة الخاصة به بعد تنبيه؛ ولا تُنقل.</p>
+<p><strong>حذف حسابك لا يلغي اشتراك Google Play.</strong> ألغِه في Google Play عبر <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>. وقد تحتفظ RevenueCat، خدمة الاشتراكات لدينا، بسجلها الخاص عن الشراء بعد حذف حسابك؛ أما هل تحذفه وكيف فغير مؤكد بعد. انظر <a href="../privacy/">سياسة الخصوصية</a>.</p>
+
+<h2>اطلب الحذف عبر الويب</h2>
+<p>لا نعرف اسمك ولا بريدك الإلكتروني (تسجيل الدخول عبر Google لا يخزّن إلا معرّف الحساب)، ولذلك لا نستطيع حذف البيانات إلا عندما يشير طلبك إلى مستخدم واحد بالضبط. وإذا سجّلت الدخول عبر Google ولم يعد التطبيق لديك فأرسل في الطلب أدناه معرّف جهاز دوّنته سابقًا، أو أعد تثبيت التطبيق وسجّل الدخول عبر Google واقرأ معرّف الجهاز من الإعدادات ← معرّف الجهاز (أو احذف من داخل التطبيق)؛ ونعالج كل طلب يدويًا.</p>
+<ul>
+  <li>لا يحذف الطلب بيانات إلا إذا طابق <strong>معرّف الجهاز (Device ID)</strong> الذي تدخله (في التطبيق ضمن الإعدادات ← معرّف الجهاز) جهازًا ما زال موجودًا (لم يُحذف). ولا يُقبل أي بيان آخر بدلًا منه.</li>
+  <li>لا يمكن لعنوان البريد الإلكتروني وحده أن يحدد مستخدمًا؛ ويُستخدم فقط للرد عليك.</li>
+  <li>إذا تعذّر علينا التحقق من الطلب فلن يُحذف شيء، وسيتلقى كل طلب من هذا النوع الرد المحايد نفسه: «تعذّر علينا التحقق من هذا الطلب. يُرجى حذف بياناتك من التطبيق (الإعدادات ← حذف الحساب والبيانات). وتُحذف تلقائيًا بيانات أي مستخدم لم يتصل أي من أجهزته بخادمنا منذ 12 شهرًا.» ولا يبيّن الرد ما إذا كان هناك مستخدم كهذا.</li>
+  <li>يعالج المطوّر كل طلب خلال 30 يومًا. ولا يحتوي سجل الطلب إلا على عنوان البريد الإلكتروني ومعرّف الجهاز؛ ويُحذف بعد 30 يومًا من إغلاق الطلب، وعلى أي حال بعد 60 يومًا على الأكثر من إرساله.</li>
+  <li>في كل مرة استخدم فيها أحدهم «مسح البيانات المحلية» أنشأ التطبيق هوية جهاز جديدة، ولذلك قد يكون للشخص أكثر من هوية؛ أرسل طلبًا واحدًا لكل معرّف جهاز تعرفه.</li>
+</ul>
+
+<!-- form: Task 2 (api-dev). Fields and replies: supabase/functions/account-delete-request/app.ts (email and device_id required,
+     honeypot website always sent as ''). The form has no action and stays hidden until the inline script runs, so without
+     script nothing is submitted and the e-mail line below is the path; the script never echoes a submitted value. -->
+<form id="request-form" aria-label="نموذج طلب الحذف" hidden>
+  <p><label for="email">عنوان البريد الإلكتروني (مطلوب)</label>
+  <input id="email" name="email" type="text" inputmode="email" autocomplete="email" maxlength="254" required aria-describedby="email-hint" dir="ltr">
+  <span class="hint" id="email-hint">العنوان الذي نبلغك عليه بالنتيجة. لا يُستخدم لأي غرض آخر، ولا يمكنه وحده أن يحدد هويتك.</span></p>
+  <p><label for="device_id">معرّف الجهاز (مطلوب)</label>
+  <input id="device_id" name="device_id" type="text" autocomplete="off" spellcheck="false" required aria-describedby="device_id-hint" dir="ltr">
+  <span class="hint" id="device_id-hint">في التطبيق: الإعدادات ← معرّف الجهاز. رمز مثل 123e4567-e89b-12d3-a456-426614174000.</span></p>
+  <div class="hp" aria-hidden="true"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" disabled>إرسال الطلب</button>
+  <p id="request-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  var MSG = {"sent":"استلمنا طلبك؛ ونعالجه خلال 30 يومًا.","invalid":"تحقق من الحقول.","later":"حاول مرة أخرى لاحقًا، أو راسل purplepixxelstudios@gmail.com.","failed":"تعذّر الإرسال. راسل purplepixxelstudios@gmail.com."};
+  var form = document.getElementById('request-form');
+  var status = document.getElementById('request-status');
+  var button = form.querySelector('button');
+  var CONTROL = /[\u0000-\u001F\u007F-\u009F]/;
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  // As account-delete-request parseEmail: no control character, trimmed, 3..254 code points,
+  // no whitespace inside, exactly one '@' with text either side. Null when invalid.
+  function email(value) {
+    if (CONTROL.test(value)) return null;
+    var v = value.trim();
+    var n = Array.from(v).length;
+    var parts = v.split('@');
+    if (n < 3 || n > 254 || /\s/.test(v) || parts.length !== 2 || !parts[0] || !parts[1]) return null;
+    return v;
+  }
+  function send(body) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 15000);
+    button.disabled = true;
+    status.textContent = '';
+    return fetch('https://jojxngxthmlqglyowgob.supabase.co/functions/v1/account-delete-request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      credentials: 'omit',
+      signal: ctrl.signal
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (res.status === 200 && data.ok === true) { form.reset(); return MSG.sent; }
+        if (res.status === 400 && data.code === 'invalid_body') return MSG.invalid;
+        if ((res.status === 429 && data.code === 'rate_limited') || (res.status === 503 && data.code === 'unavailable')) return MSG.later;
+        return MSG.failed;
+      });
+    }).catch(function () { return MSG.failed; }).then(function (text) {
+      clearTimeout(timer);
+      button.disabled = false;
+      status.textContent = text;
+    });
+  }
+  form.hidden = false;
+  button.disabled = false;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var f = form.elements;
+    // website (honeypot) is always sent as the field's string value: '' unless a bot filled it.
+    var body = { email: email(f.email.value), device_id: f.device_id.value.trim(), website: f.website.value };
+    if (body.email === null) { status.textContent = MSG.invalid; f.email.focus(); return; }
+    if (!UUID.test(body.device_id)) { status.textContent = MSG.invalid; f.device_id.focus(); return; }
+    return send(body);
+  });
+})();
+</script>
+
+<p>يمكنك أيضًا مراسلة <a href="mailto:purplepixxelstudios@gmail.com">purplepixxelstudios@gmail.com</a> بعنوان الموضوع «Delete my data» (احذف بياناتي) مع التفاصيل نفسها.</p>
+
+<nav aria-label="الصفحات"><a href="../privacy/">سياسة الخصوصية</a> · <a href="../terms/">شروط الاستخدام</a> · <a href="../report/">الإبلاغ عن محتوى</a> · <a href="../contact/">الاتصال بأصحاب الحقوق</a> · <a href="../crisis/">بروتوكول الأزمات</a></nav>
+</body>
+</html>
